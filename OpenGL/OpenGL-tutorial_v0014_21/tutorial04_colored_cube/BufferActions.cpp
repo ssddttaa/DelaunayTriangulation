@@ -23,7 +23,7 @@ void BufferActions::addVec3ToBuffer(int * arrayOfVec3, vector<float> *buffer_poi
     for(int i = 0;i<numberOfVectorsToAdd;i++)
     {
         int whichPointToAdd = arrayOfVec3[i];
-        vec3 tempVec(allVec3s->at(arrayOfVec3[whichPointToAdd]));
+        vec3 tempVec(allVec3s->at(whichPointToAdd));
         buffer_pointer->push_back(tempVec[0]);
         buffer_pointer->push_back(tempVec[1]);
         buffer_pointer->push_back(tempVec[2]);

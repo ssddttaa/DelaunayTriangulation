@@ -167,10 +167,10 @@ GLuint colorbuffer;
 int main( void )
 {
     //PARSE THROUGH NODE FILE AND GET ALL OF THE NODES
-    //ParseClass::ParseNodeFile("spine.node", &nodeArray, &numVertices);
+    ParseClass::ParseNodeFile("randomNodes.node", &nodeArray, &numVertices);
     
     //RANDOMIZE SEED FOR WHEN GENERATING RANODM VALUES
-    generateRandomPoints(&nodeArray);
+    //generateRandomPoints(&nodeArray);
     
     //SET UP INPUT TETGEN
     DelaunayTriangulate(&nodeArray);
@@ -294,7 +294,7 @@ void setupWindow()
     Projection = glm::perspective(90.0f, 4.0f / 3.0f, 0.1f, 300.0f);
     // Camera matrix
     View       = glm::lookAt(
-                                       glm::vec3(2,2,-2), // Camera is at (4,3,-3), in World Space
+                                       glm::vec3(50,50,-50), // Camera is at (4,3,-3), in World Space
                                        glm::vec3(0,0,0), // and looks at the origin
                                        glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
                                        );
@@ -349,7 +349,7 @@ void createAllTetrahedra()
         
         tetPoints.push_back(tetPoint1);tetPoints.push_back(tetPoint2);tetPoints.push_back(tetPoint3);tetPoints.push_back(tetPoint4);
         
-        int tetPointsToAdd[12] = {1,2,3,1,2,4,1,3,4,2,3,4};
+        int tetPointsToAdd[12] = {0,1,2,0,1,3,0,2,3,1,2,3};
         BufferActions::addVec3ToBuffer(tetPointsToAdd, vertex_buffer_pointer, &tetPoints, 12);
         BufferActions::addVec3ToBuffer(tetPointsToAdd, vertex_color_pointer, &tetPoints, 12);
         
