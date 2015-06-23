@@ -1,173 +1,9 @@
-// Include standard headers
-#include "tetgen.h"
-
-// Include GLEW
-#include <GL/glew.h>
-
-// Include GLFW
-#include <glfw3.h>
-GLFWwindow* window;
-
-// Include GLM
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include "DrawObjects.h"
-
-using namespace glm;
-using namespace std;
-
-#include <common/shader.hpp>
-
-#include <iostream>
-
-#include <vector>
-
-#include "BufferActions.h"
-
-#include "ParseClass.h"
-
-#include <unistd.h>
-
-std::vector<GLfloat> objects_vertex_buffers;
-std::vector<GLfloat> objects_color_buffers;
-
-vector<float> g_vertex_buffer_data;
-vector<float> g_color_buffer_data;
-vector<float> g_cube_centers;
-
-vector<float> tetrahedraArray;
-int numberOfTetrahedra = 0;
-
-GLfloat cube_vertex_data[] = {
-    -1.0f,-1.0f,-1.0f,
-    -1.0f,-1.0f, 1.0f,
-    -1.0f, 1.0f, 1.0f,
-    1.0f, 1.0f,-1.0f,
-    -1.0f,-1.0f,-1.0f,
-    -1.0f, 1.0f,-1.0f,
-    1.0f,-1.0f, 1.0f,
-    -1.0f,-1.0f,-1.0f,
-    1.0f,-1.0f,-1.0f,
-    1.0f, 1.0f,-1.0f,
-    1.0f,-1.0f,-1.0f,
-    -1.0f,-1.0f,-1.0f,
-    -1.0f,-1.0f,-1.0f,
-    -1.0f, 1.0f, 1.0f,
-    -1.0f, 1.0f,-1.0f,
-    1.0f,-1.0f, 1.0f,
-    -1.0f,-1.0f, 1.0f,
-    -1.0f,-1.0f,-1.0f,
-    -1.0f, 1.0f, 1.0f,
-    -1.0f,-1.0f, 1.0f,
-    1.0f,-1.0f, 1.0f,
-    1.0f, 1.0f, 1.0f,
-    1.0f,-1.0f,-1.0f,
-    1.0f, 1.0f,-1.0f,
-    1.0f,-1.0f,-1.0f,
-    1.0f, 1.0f, 1.0f,
-    1.0f,-1.0f, 1.0f,
-    1.0f, 1.0f, 1.0f,
-    1.0f, 1.0f,-1.0f,
-    -1.0f, 1.0f,-1.0f,
-    1.0f, 1.0f, 1.0f,
-    -1.0f, 1.0f,-1.0f,
-    -1.0f, 1.0f, 1.0f,
-    1.0f, 1.0f, 1.0f,
-    -1.0f, 1.0f, 1.0f,
-    1.0f,-1.0f, 1.0f
-};
-
-//RAINBOW CUBE
-GLfloat cube_color_data[] = {
-    -1.0f,-1.0f,-1.0f,
-    -1.0f,-1.0f, 1.0f,
-    -1.0f, 1.0f, 1.0f,
-    1.0f, 1.0f,-1.0f,
-    -1.0f,-1.0f,-1.0f,
-    -1.0f, 1.0f,-1.0f,
-    1.0f,-1.0f, 1.0f,
-    -1.0f,-1.0f,-1.0f,
-    1.0f,-1.0f,-1.0f,
-    1.0f, 1.0f,-1.0f,
-    1.0f,-1.0f,-1.0f,
-    -1.0f,-1.0f,-1.0f,
-    -1.0f,-1.0f,-1.0f,
-    -1.0f, 1.0f, 1.0f,
-    -1.0f, 1.0f,-1.0f,
-    1.0f,-1.0f, 1.0f,
-    -1.0f,-1.0f, 1.0f,
-    -1.0f,-1.0f,-1.0f,
-    -1.0f, 1.0f, 1.0f,
-    -1.0f,-1.0f, 1.0f,
-    1.0f,-1.0f, 1.0f,
-    1.0f, 1.0f, 1.0f,
-    1.0f,-1.0f,-1.0f,
-    1.0f, 1.0f,-1.0f,
-    1.0f,-1.0f,-1.0f,
-    1.0f, 1.0f, 1.0f,
-    1.0f,-1.0f, 1.0f,
-    1.0f, 1.0f, 1.0f,
-    1.0f, 1.0f,-1.0f,
-    -1.0f, 1.0f,-1.0f,
-    1.0f, 1.0f, 1.0f,
-    -1.0f, 1.0f,-1.0f,
-    -1.0f, 1.0f, 1.0f,
-    1.0f, 1.0f, 1.0f,
-    -1.0f, 1.0f, 1.0f,
-    1.0f,-1.0f, 1.0f
-};
-
-vector<vec3> nodeArray;
-int numVertices = 200;
-
-int totalVertices = 0;
-tetgenio in, out;
-
-GLuint programID;
-
-// Get a handle for our "MVP" uniform
-GLuint MatrixID;
-
-// Get a handle for our buffers
-GLuint vertexPosition_modelspaceID;
-GLuint vertexColorID;
-// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-glm::mat4 Projection;
-// Camera matrix
-glm::mat4 View;
-// Model matrix : an identity matrix (model will be at the origin)
-glm::mat4 Model;
-// Our ModelViewProjection : multiplication of our 3 matrices
-glm::mat4 MVP;
-
-vector<float> *vertex_buffer_pointer;
-vector<float> *vertex_color_pointer;
-
-void generateRandomPoints(vector<vec3> *nodeArray);
-
-void DelaunayTriangulate(vector<vec3> *nodeArray);
-
-void setupWindow();
-
-void createAllPoints(vector<float> *vertex_buffer_pointer, vector<float> *vertex_color_pointer);
-
-void createAllTetrahedra();
-
-void setBuffers();
-
-void drawLoop();
-
-void cleanup();
-
-GLuint vertexbuffer;
-GLfloat *vertexBufferFloat;
-GLfloat *colorBufferFloat;
-GLuint colorbuffer;
+#include "DelaunayTriangulate.h"
 
 int main( void )
 {
     //PARSE THROUGH NODE FILE AND GET ALL OF THE NODES
-    ParseClass::ParseNodeFile("randomNodes.node", &nodeArray, &numVertices);
+    ParseClass::ParseNodeFile("spine.node", &nodeArray, &numVertices);
     
     //RANDOMIZE SEED FOR WHEN GENERATING RANODM VALUES
     //generateRandomPoints(&nodeArray);
@@ -231,8 +67,10 @@ void DelaunayTriangulate(vector<vec3> *nodeArray)
     string filePrefix = "randomNodes";
     char* filePrefixChar= (char*)filePrefix.c_str();
     out.save_elements(filePrefixChar);
-
+    
     ParseClass::ParseEdgeFile((filePrefix+".ele"), &tetrahedraArray, &numberOfTetrahedra);
+
+    ParseClass::ParseFaceFile("convexhull.face", &faceArray, &numberOfTetrahedra);
     //out.save_edges(filePrefixChar);
     //out.save_nodes(filePrefixChar);
     
@@ -282,7 +120,7 @@ void setupWindow()
     
     
     
-    programID = LoadShaders( "TransformVertexShader.vertexshader", "ColorFragmentShader.fragmentshader" );
+    programID = LoadShaders( "windowNodeWithHole.node", "ColorFragmentShader.fragmentshader" );
     
     // Get a handle for our "MVP" uniform
     MatrixID = glGetUniformLocation(programID, "MVP");
@@ -294,7 +132,7 @@ void setupWindow()
     Projection = glm::perspective(90.0f, 4.0f / 3.0f, 0.1f, 300.0f);
     // Camera matrix
     View       = glm::lookAt(
-                                       glm::vec3(50,50,-50), // Camera is at (4,3,-3), in World Space
+                                       glm::vec3(0,0,-5), // Camera is at (4,3,-3), in World Space
                                        glm::vec3(0,0,0), // and looks at the origin
                                        glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
                                        );
@@ -427,7 +265,7 @@ void drawLoop()
             vec3 tetPoint3(nodeArray.at((tetrahedraArray.at((i*4)+2))));
             vec3 tetPoint4(nodeArray.at((tetrahedraArray.at((i*4)+3))));
             
-            glLineWidth(1);
+            glLineWidth(2.5);
             glColor3f(1.0, 0.0, 0.0);
             
             glBegin(GL_LINES);
@@ -478,4 +316,10 @@ void cleanup()
     
     // Close OpenGL window and terminate GLFW
     glfwTerminate();
+}
+
+void setHullFaces(vector<vec3> *convexHullFaces)
+{
+    hullFaces = *convexHullFaces;
+    
 }

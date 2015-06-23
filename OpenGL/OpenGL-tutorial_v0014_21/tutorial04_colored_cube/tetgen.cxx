@@ -15,6 +15,8 @@
 
 #include "tetgen.h"
 #include <iostream>
+#include <fstream>
+#include <glm/glm.hpp>
 
 //// io_cxx ///////////////////////////////////////////////////////////////////
 ////                                                                       ////
@@ -3278,6 +3280,7 @@ bool tetgenbehavior::parse_commandline(int argc, char **argv)
       } else if (argv[i][j] == 'k') {
         vtkview = 1;  
       } else if (argv[i][j] == 'J') {
+          std::cout<<"NOT JETTISONING POINTS";
         nojettison = 1;
       } else if (argv[i][j] == 'B') {
         nobound = 1;
@@ -4105,7 +4108,6 @@ void tetgenmesh::memorypool::dealloc(void *dyingitem)
 
 void tetgenmesh::memorypool::traversalinit()
 {
-    std::cout<<"starting traversal";
   uintptr_t alignptr;
 
   // Begin the traversal in the first block.
@@ -29264,7 +29266,11 @@ void tetgenmesh::outhullfaces(tetgenio* out)
   int firstindex, shift;
   int facenumber;
   int index;
-
+    strcpy(b->outfilename, "convexhull");
+    
+    strcpy(facefilename, b->outfilename);
+    strcat(facefilename, ".face");
+    
   if (out == (tetgenio *) NULL) {
     strcpy(facefilename, b->outfilename);
     strcat(facefilename, ".face");
@@ -29279,6 +29285,7 @@ void tetgenmesh::outhullfaces(tetgenio* out)
   }
 
   if (out == (tetgenio *) NULL) {
+      
     outfile = fopen(facefilename, "w");
     if (outfile == (FILE *) NULL) {
       printf("File I/O Error:  Cannot create file %s.\n", facefilename);
@@ -29307,22 +29314,32 @@ void tetgenmesh::outhullfaces(tetgenio* out)
   tetrahedrons->traversalinit();
   hulltet.tet = alltetrahedrontraverse();
   facenumber = firstindex;
+    
+    outfile = fopen(facefilename, "w");
+
+    std::ofstream outputFile;
+    outputFile.open("convexhull.face", std::ofstream::out);
   while (hulltet.tet != (tetrahedron *) NULL) {
     if (ishulltet(hulltet)) {
       torg = (point) hulltet.tet[4];
       tdest = (point) hulltet.tet[5];
       tapex = (point) hulltet.tet[6];
-      if (out == (tetgenio *) NULL) {
-        // Face number, indices of three vertices.
-        fprintf(outfile, "%5d   %4d  %4d  %4d", facenumber,
+      if (false) {
+        /*fprintf(outfile, "%5d   %4d  %4d  %4d", facenumber,
                 pointmark(torg) - shift, pointmark(tdest) - shift,
                 pointmark(tapex) - shift);
-        fprintf(outfile, "\n");
+        fprintf(outfile, "\n");*/
       } else {
-        // Output indices of three vertices.
+          // Face number, indices of three vertices.
+          outputFile<<(pointmark(torg) - shift)<<"  "<<(pointmark(tdest) - shift)<<"  "<<(pointmark(tapex) - shift)<<"\n";
+          
         elist[index++] = pointmark(torg) - shift;
         elist[index++] = pointmark(tdest) - shift;
         elist[index++] = pointmark(tapex) - shift;
+          
+          /*fprintf(outfile, "%4d  %4d  %4d",
+                  (pointmark(torg) - shift), (pointmark(tdest) - shift),
+                  (pointmark(tapex) - shift));*/
       }
       facenumber++;
     }
@@ -31025,7 +31042,7 @@ void tetrahedralize(tetgenbehavior *b, tetgenio *in, tetgenio *out,
   }
 
   if (b->quality) {
-    m.delaunayrefinement();    
+    //m.delaunayrefinement();
   }
 
   tv[9] = clock();
@@ -31105,6 +31122,7 @@ void tetrahedralize(tetgenbehavior *b, tetgenio *in, tetgenio *out,
       }
     }
   }
+    m.outhullfaces(out);
 
 
   if (b->nofacewritten) {

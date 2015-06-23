@@ -32,6 +32,7 @@ class ParseClass
         static void ParseEdgeFile(string nodeFile, vector<float> *nodeArray, int* numberOfVertices);
         static void ParseNodeFile(string nodeFile, vector<vec3> *nodeArray, int* numberOfVertices);
         static void ParseMeshFile(string meshFile, vector<int> *facetArray, int* numberOfFacets);
+        static void ParseFaceFile(string faceFileName, vector<vec3> *nodeArray, int* numberOfVertices);
 };
 
 #endif /* defined(__Tutorials__ParseClass__) */

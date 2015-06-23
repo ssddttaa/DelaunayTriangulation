@@ -37,6 +37,7 @@
 				19BE6E921C384E4B870383DE /* PBXTargetDependency */,
 				61E4F1DFEFC04337BE5855D3 /* PBXTargetDependency */,
 				6BBF809551DC462F8716A17E /* PBXTargetDependency */,
+				9907463B286E45EBBF19F360 /* PBXTargetDependency */,
 				AC8E0391C8464A4F8C0CB40D /* PBXTargetDependency */,
 				8F33754E4C3341A584150F8B /* PBXTargetDependency */,
 				A289DCCEBC5C492A81311D97 /* PBXTargetDependency */,
@@ -48,7 +49,6 @@
 				D95737EF39F64123A0833529 /* PBXTargetDependency */,
 				495BEE03BD794EDA8C595DBF /* PBXTargetDependency */,
 				646F0C65843C42B98B22BA58 /* PBXTargetDependency */,
-				9907463B286E45EBBF19F360 /* PBXTargetDependency */,
 				6E18BFD65A3743A3AADEF5D1 /* PBXTargetDependency */,
 				AE7ABBB7F2CF49C091BC181D /* PBXTargetDependency */,
 				F220F7ADC503475CA28CC7E7 /* PBXTargetDependency */,
@@ -111,7 +111,7 @@
 		0E1A7E8C1B33356D00D80F31 /* ParseClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E751B33356D00D80F31 /* ParseClass.cpp */; };
 		0E1A7E8D1B33356D00D80F31 /* predicates.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E771B33356D00D80F31 /* predicates.cxx */; };
 		0E1A7E8E1B33356D00D80F31 /* tetgen.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E841B33356D00D80F31 /* tetgen.cxx */; };
-		0E1A7E931B33360100D80F31 /* tutorial04 13-22-04-250.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E921B33360000D80F31 /* tutorial04 13-22-04-250.cpp */; };
+		0E1A7E931B33360100D80F31 /* DelaunayTriangulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E921B33360000D80F31 /* DelaunayTriangulate.cpp */; };
 		0EA0A0CB1405484B82CB6903 /* Q3BSPFileParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C38FD9BC0B994247AF3669BA /* Q3BSPFileParser.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		0F1E0A8408524C93A380CD1C /* btHingeConstraint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F83B35F798ED4E1293C06A00 /* btHingeConstraint.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		0F30DB01F8D94D109387F18D /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 6E2562B0856B46B8B53B32D6 /* inflate.c */; settings = {COMPILER_FLAGS = ""; }; };
@@ -1539,7 +1539,8 @@
 		0E1A7E851B33356D00D80F31 /* tetgen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tetgen.h; path = tutorial04_colored_cube/tetgen.h; sourceTree = "<group>"; };
 		0E1A7E861B33356D00D80F31 /* tetgen.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = tetgen.o; path = tutorial04_colored_cube/tetgen.o; sourceTree = "<group>"; };
 		0E1A7E871B33356D00D80F31 /* TransformVertexShader.vertexshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TransformVertexShader.vertexshader; path = tutorial04_colored_cube/TransformVertexShader.vertexshader; sourceTree = "<group>"; };
-		0E1A7E921B33360000D80F31 /* tutorial04 13-22-04-250.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "tutorial04 13-22-04-250.cpp"; path = "tutorial04_colored_cube/tutorial04 13-22-04-250.cpp"; sourceTree = "<group>"; };
+		0E1A7E921B33360000D80F31 /* DelaunayTriangulate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DelaunayTriangulate.cpp; path = tutorial04_colored_cube/DelaunayTriangulate.cpp; sourceTree = "<group>"; };
+		0E1CBCF11B3859E00074AF24 /* DelaunayTriangulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DelaunayTriangulate.h; path = tutorial04_colored_cube/DelaunayTriangulate.h; sourceTree = "<group>"; };
 		0E581CC4011A4F10AAC0049A /* VertexTriangleAdjacency.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = VertexTriangleAdjacency.cpp; path = "external/assimp-3.0.1270/code/VertexTriangleAdjacency.cpp"; sourceTree = SOURCE_ROOT; };
 		0E64EE26863243DAA8902674 /* camera.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = camera.h; path = "external/assimp-3.0.1270/include/assimp/camera.h"; sourceTree = SOURCE_ROOT; };
 		0EDB985C76054A19BDF9DC05 /* controls.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = controls.hpp; path = common/controls.hpp; sourceTree = SOURCE_ROOT; };
@@ -3108,8 +3109,8 @@
 				0E1A7E6F1B33356D00D80F31 /* DrawObjects.cpp */,
 				0E1A7E701B33356D00D80F31 /* DrawObjects.h */,
 				0E1A7E711B33356D00D80F31 /* edges.edge */,
-				0E1A7E721B33356D00D80F31 /* edges.ele */,
 				0E1A7E731B33356D00D80F31 /* example.poly */,
+				0E1A7E721B33356D00D80F31 /* edges.ele */,
 				0E1A7E741B33356D00D80F31 /* libtet.a */,
 				0E1A7E751B33356D00D80F31 /* ParseClass.cpp */,
 				0E1A7E761B33356D00D80F31 /* ParseClass.h */,
@@ -3124,8 +3125,9 @@
 				0E1A7E841B33356D00D80F31 /* tetgen.cxx */,
 				0E1A7E851B33356D00D80F31 /* tetgen.h */,
 				0E1A7E861B33356D00D80F31 /* tetgen.o */,
-				0E1A7E921B33360000D80F31 /* tutorial04 13-22-04-250.cpp */,
+				0E1A7E921B33360000D80F31 /* DelaunayTriangulate.cpp */,
 				0E1A7E871B33356D00D80F31 /* TransformVertexShader.vertexshader */,
+				0E1CBCF11B3859E00074AF24 /* DelaunayTriangulate.h */,
 			);
 			name = "Source Files";
 			sourceTree = "<group>";
@@ -6265,7 +6267,7 @@
 				0E1A7E8E1B33356D00D80F31 /* tetgen.cxx in Sources */,
 				0E1A7E8B1B33356D00D80F31 /* DrawObjects.cpp in Sources */,
 				72C351A469BA407F915E64CB /* shader.cpp in Sources */,
-				0E1A7E931B33360100D80F31 /* tutorial04 13-22-04-250.cpp in Sources */,
+				0E1A7E931B33360100D80F31 /* DelaunayTriangulate.cpp in Sources */,
 				0E1A7E8C1B33356D00D80F31 /* ParseClass.cpp in Sources */,
 				0E1A7E8A1B33356D00D80F31 /* BufferActions.cpp in Sources */,
 				0E1A7E8D1B33356D00D80F31 /* predicates.cxx in Sources */,

@@ -132,3 +132,29 @@ void ParseClass::ParseMeshFile(string meshFile, vector<int> *facetArray, int* nu
         }
     }
 }
+
+
+void ParseClass::ParseFaceFile(string faceFileName, vector<vec3> *nodeArray, int* numberOfVertices)
+{
+    ifstream fileHandle;
+    fileHandle.open(faceFileName);
+    string currentLine = "";
+    while(getline(fileHandle, currentLine))
+    {
+        istringstream iss(currentLine);
+        float nextNumber;
+        
+        vec3 tempVec;
+        iss>>nextNumber; //Keep the second number, as that is x coordinate
+        
+        tempVec[0] = nextNumber;
+        
+        iss>>nextNumber; //Keep the third number, as that is y coordinate
+        tempVec[1] = nextNumber;
+        
+        iss>>nextNumber; //Keep the fourth number, as that is z coordinate
+        tempVec[2] = nextNumber;
+        
+        nodeArray->push_back(tempVec);
+    }
+}
