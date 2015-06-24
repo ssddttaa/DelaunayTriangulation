@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tutorial04_colored_cube/main.cpp"
-            timestampString = "456426551.897525"
+            timestampString = "456862086.860722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "createAllTetrahedra()"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "main (void)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tutorial04_colored_cube/DelaunayTriangulate.cpp"
-            timestampString = "456854790.630833"
+            timestampString = "456863229.995438"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "triangulateUsingTetgen(vector&lt;vec3&gt;*nodeArray)"
-            landmarkType = "7">
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "DelaunayTriangulation::triangulateUsingTetgen(vector&lt;vec3&gt;*nodeArray)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,29 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tutorial04_colored_cube/DelaunayTriangulate.cpp"
-            timestampString = "456854790.630833"
+            timestampString = "456862086.860722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "addPointsToTriangulation(vector&lt;vec3&gt; * pointsToAdd, int numberOfPoints)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tutorial04_colored_cube/DelaunayTriangulate.cpp"
-            timestampString = "456852924.715115"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "main( void )"
-            landmarkType = "7">
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "DelaunayTriangulation::DelaunayTriangulation()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

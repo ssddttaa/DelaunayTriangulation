@@ -10,9 +10,6 @@
 
 void CGALDelaunay::TriangulateUsingCGAL(vector<glm::vec3> *nodeArrayPointer, vector<float>* bufferPointer, vector<float> *colorPointer, int* numberOfVertices, std::list<Point> *VerticesToTriangulate, std::list<Point> * VerticesToAdd, int* verticesAlreadyAdded, Triangulation* T, int* totalVertices)
 {
-    /*
-     CGALDelaunay::TriangulateUsingCGAL(pointsToAdd, &g_vertex_buffer_data, &g_color_buffer_data,&numberOfPoints,&VerticesToTriangulate, &VerticesToAdd, VerticesToTriangulate.size(), TriangulationOfPoints);
-     */
     bool isFirstTriangulation = false;
     // construction from a list of points :
     if(*verticesAlreadyAdded == 0)
@@ -34,7 +31,6 @@ void CGALDelaunay::TriangulateUsingCGAL(vector<glm::vec3> *nodeArrayPointer, vec
             vec3 tempVec;
             tempVec = nodeArrayPointer->at(i);
             T->insert(Point(tempVec[0], tempVec[1], tempVec[2]));
-            //cout<<"Inserting:("<<tempVec[0]<<","<<tempVec[1]<<","<<tempVec[2]<<")"<<endl;
         }
     }
 

@@ -111,6 +111,7 @@
 		0E1A7E8C1B33356D00D80F31 /* ParseClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E751B33356D00D80F31 /* ParseClass.cpp */; };
 		0E1A7E8D1B33356D00D80F31 /* predicates.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E771B33356D00D80F31 /* predicates.cxx */; };
 		0E1A7E8E1B33356D00D80F31 /* tetgen.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E841B33356D00D80F31 /* tetgen.cxx */; };
+		0E8DD9C11B3B236700501BF2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E8DD9BF1B3B236700501BF2 /* main.cpp */; };
 		0EA0A0CB1405484B82CB6903 /* Q3BSPFileParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C38FD9BC0B994247AF3669BA /* Q3BSPFileParser.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		0EFABACA1B39C03F007A358F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFABAC91B39C03F007A358F /* Cocoa.framework */; };
 		0EFABACC1B39C05C007A358F /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFABACB1B39C05C007A358F /* libboost_thread-mt.dylib */; };
@@ -1545,6 +1546,8 @@
 		0E1CBCF11B3859E00074AF24 /* DelaunayTriangulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DelaunayTriangulate.h; path = tutorial04_colored_cube/DelaunayTriangulate.h; sourceTree = "<group>"; };
 		0E581CC4011A4F10AAC0049A /* VertexTriangleAdjacency.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = VertexTriangleAdjacency.cpp; path = "external/assimp-3.0.1270/code/VertexTriangleAdjacency.cpp"; sourceTree = SOURCE_ROOT; };
 		0E64EE26863243DAA8902674 /* camera.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = camera.h; path = "external/assimp-3.0.1270/include/assimp/camera.h"; sourceTree = SOURCE_ROOT; };
+		0E8DD9BF1B3B236700501BF2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = tutorial04_colored_cube/main.cpp; sourceTree = "<group>"; };
+		0E8DD9C01B3B236700501BF2 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = tutorial04_colored_cube/main.h; sourceTree = "<group>"; };
 		0EDB985C76054A19BDF9DC05 /* controls.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = controls.hpp; path = common/controls.hpp; sourceTree = SOURCE_ROOT; };
 		0EE4729F047041A0A5956D8C /* OFFLoader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OFFLoader.h; path = "external/assimp-3.0.1270/code/OFFLoader.h"; sourceTree = SOURCE_ROOT; };
 		0EFABAC91B39C03F007A358F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -3224,6 +3227,8 @@
 				0E8DD9BC1B3B222F00501BF2 /* Tetgen */,
 				0EFABAC61B39A34E007A358F /* DelaunayTriangulate */,
 				0EFABADE1B39C218007A358F /* CGALDelaunay */,
+				0E8DD9BF1B3B236700501BF2 /* main.cpp */,
+				0E8DD9C01B3B236700501BF2 /* main.h */,
 			);
 			name = "Source Files";
 			sourceTree = "<group>";
@@ -6363,6 +6368,7 @@
 			files = (
 				0E1A7E8E1B33356D00D80F31 /* tetgen.cxx in Sources */,
 				0EFABAE11B39DDFC007A358F /* CGALDelaunayTriangulation.cpp in Sources */,
+				0E8DD9C11B3B236700501BF2 /* main.cpp in Sources */,
 				0E1A7E8B1B33356D00D80F31 /* DrawObjects.cpp in Sources */,
 				72C351A469BA407F915E64CB /* shader.cpp in Sources */,
 				0E1A7E8C1B33356D00D80F31 /* ParseClass.cpp in Sources */,

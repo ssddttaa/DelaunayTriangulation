@@ -1,17 +1,61 @@
 #include "DelaunayTriangulate.h"
 
-int main( void )
+DelaunayTriangulation::DelaunayTriangulation()
 {
+    GLfloat temp_vertex_data[] = {
+        -1.0f,-1.0f,-1.0f,
+        -1.0f,-1.0f, 1.0f,
+        -1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f,-1.0f,
+        -1.0f,-1.0f,-1.0f,
+        -1.0f, 1.0f,-1.0f,
+        1.0f,-1.0f, 1.0f,
+        -1.0f,-1.0f,-1.0f,
+        1.0f,-1.0f,-1.0f,
+        1.0f, 1.0f,-1.0f,
+        1.0f,-1.0f,-1.0f,
+        -1.0f,-1.0f,-1.0f,
+        -1.0f,-1.0f,-1.0f,
+        -1.0f, 1.0f, 1.0f,
+        -1.0f, 1.0f,-1.0f,
+        1.0f,-1.0f, 1.0f,
+        -1.0f,-1.0f, 1.0f,
+        -1.0f,-1.0f,-1.0f,
+        -1.0f, 1.0f, 1.0f,
+        -1.0f,-1.0f, 1.0f,
+        1.0f,-1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f,-1.0f,-1.0f,
+        1.0f, 1.0f,-1.0f,
+        1.0f,-1.0f,-1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f,-1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f,-1.0f,
+        -1.0f, 1.0f,-1.0f,
+        1.0f, 1.0f, 1.0f,
+        -1.0f, 1.0f,-1.0f,
+        -1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        -1.0f, 1.0f, 1.0f,
+        1.0f,-1.0f, 1.0f
+    };
+    //temporary set of coordinates used to copy the default cube coordiantes into the cube_vertex_data and cube_color_data buffers
+
+    numberOfTetrahedra = 0; //Used for the tetgen tetrahedralization
+    memcpy(cube_vertex_data, temp_vertex_data, sizeof(temp_vertex_data));//Copies over the contents of the temp cube
+    memcpy(cube_color_data, temp_vertex_data, sizeof(temp_vertex_data));//Copies over the content of the temp cube
+
+    totalVertices = 0;//Variable used for the tetegen library
+    
     //PARSE THROUGH NODE FILE AND GET ALL OF THE NODES
     int nodeArraySize;
     ParseClass::ParseNodeFile("firstThird.node", &nodeArray, &nodeArraySize);
     
-    //RANDOMIZE SEED FOR WHEN GENERATING RANODM VALUES
-    //generateRandomPoints(&nodeArray);
-    
+    //SET UP OPENGL WINDOW
     setupWindow();
-    //SET UP INPUT TETGEN
-
+    
+    //MAIN TRIANGULATION BEGINS
     triangulate(false, &nodeArray, true, nodeArraySize);
     
     vector<vec3> secondThird;
@@ -20,41 +64,35 @@ int main( void )
     
     addPointsToTriangulation(&secondThird, numberOfAddedPoints);
     
+    //REMOVE WHEN USING ROS TO GET THE DATA
     nowDraw = true;
+    
     vector<vec3> ThirdThird;
     int numberOfAddedPointsLast;
     ParseClass::ParseNodeFile("thirdThird.node", &ThirdThird, &numberOfAddedPointsLast);
     
     addPointsToTriangulation(&ThirdThird, numberOfAddedPointsLast);
-    //triangulateUsingTetgen(&nodeArray);
-    return 0;
 }
 
-void addPointsToTriangulation(vector<vec3> * pointsToAdd, int numberOfPoints)
+//Add points to the triangulation dynamically. The code re-tetrahedralizes with the given points
+void DelaunayTriangulation::addPointsToTriangulation(vector<vec3> * pointsToAdd, int numberOfPoints)
 {
+    //Calls the class that triangulates using the library CGAL
     CGALDelaunay::TriangulateUsingCGAL(pointsToAdd, &g_vertex_buffer_data, &g_color_buffer_data,&numberOfPoints,&VerticesToTriangulate, &VerticesToAdd,&numberOfPoints, &TriangulationOfPoints, &numVertices);
+    
+    //Populates the buffers with the vertex information and color information
     setBuffers();
+    
+    //REMOVE WHEN USING DATA FROM ROS, THIS IS ONLY NEEDED TEMPORARILY
     if(nowDraw)
     {
-        drawLoop(numVertices, false);
-        cleanup();
+        drawLoop(numVertices, false); //Start the draw loop that draws the tetrahedralization every second
+        cleanup(); // Clean up the buffers that contain the vertex and color information
     }
 }
 
-void generateRandomPoints(vector<vec3> *nodeArray)
-{
-    srand(time(NULL));
-    for(int i = 0;i<numVertices;i++)
-    {
-        float xCoord = (rand()%150/100.0);
-        float yCoord = (rand()%150/100.0);
-        float zCoord = (rand()%150/100.0);
-        vec3 tempVec(xCoord, yCoord, zCoord);
-        nodeArray->push_back(tempVec);
-    }
-}
-
-void triangulate(bool usingTetgen, vector<vec3>*nodeArray, bool pointsDynamicallyInserted, int nodeArraySize)
+//Calls the different triangulation libraries. One calls the tetgen library, the other uses the CGAL library
+void DelaunayTriangulation::triangulate(bool usingTetgen, vector<vec3>*nodeArray, bool pointsDynamicallyInserted, int nodeArraySize)
 {
     if(usingTetgen)
     {
@@ -65,11 +103,10 @@ void triangulate(bool usingTetgen, vector<vec3>*nodeArray, bool pointsDynamicall
         triangulateUsingCGAL(nodeArray, pointsDynamicallyInserted, nodeArraySize);
     }
 }
-void triangulateUsingCGAL(vector<vec3> *nodeArrayPointer, bool pointsDynamicallyInserted, int nodeArraySize)
+
+//This function triangulates the points using the library CGAL
+void DelaunayTriangulation::triangulateUsingCGAL(vector<vec3> *nodeArrayPointer, bool pointsDynamicallyInserted, int nodeArraySize)
 {
-    /*
-     void CGALDelaunay::TriangulateUsingCGAL(vector<glm::vec3> *nodeArrayPointer, vector<float>* bufferPointer, vector<float> *colorPointer, int* numberOfVertices, std::list<Point> *VerticesToTriangulate, std::list<Point> * VerticesToAdd, int verticesAlreadyAdded, Triangulation* T)
-     */
     int VerticesAlreadyAdded(VerticesToTriangulate.size());
     CGALDelaunay::TriangulateUsingCGAL (nodeArrayPointer, &g_vertex_buffer_data, &g_color_buffer_data, &nodeArraySize, &VerticesToTriangulate, &VerticesToAdd, &VerticesAlreadyAdded, &TriangulationOfPoints, &numVertices);
     setBuffers();
@@ -78,14 +115,16 @@ void triangulateUsingCGAL(vector<vec3> *nodeArrayPointer, bool pointsDynamically
         drawLoop(numVertices, false);
     }
 }
-void triangulateUsingTetgen(vector<vec3>*nodeArray)
+
+//This function triangulates using the tetgen library.
+void DelaunayTriangulation::triangulateUsingTetgen(vector<vec3>*nodeArray)
 {
     DelaunayTriangulate(nodeArray);
     
     vertex_buffer_pointer = &g_vertex_buffer_data;
     vertex_color_pointer = &g_color_buffer_data;
     
-    createAllPoints(vertex_buffer_pointer, vertex_color_pointer);
+    //createAllPoints(vertex_buffer_pointer, vertex_color_pointer);
     
     createAllTetrahedra();
     
@@ -96,7 +135,8 @@ void triangulateUsingTetgen(vector<vec3>*nodeArray)
     cleanup();
 }
 
-void DelaunayTriangulate(vector<vec3> *nodeArray)
+//This function triangulates using tetgen
+void DelaunayTriangulation::DelaunayTriangulate(vector<vec3> *nodeArray)
 {
     in.firstnumber = 0;
     in.numberofpoints = numVertices;
@@ -123,14 +163,10 @@ void DelaunayTriangulate(vector<vec3> *nodeArray)
     out.save_elements(filePrefixChar);
     
     ParseClass::ParseEdgeFile((filePrefix+".ele"), &tetrahedraArray, &numberOfTetrahedra);
-
-    //ParseClass::ParseFaceFile("convexhull.face", &faceArray, &numberOfTetrahedra);
-    //out.save_edges(filePrefixChar);
-    //out.save_nodes(filePrefixChar);
-    
 }
 
-void setupWindow()
+//This function sets up the OpenGL window for displaying the contents of the tetrahedralization
+void DelaunayTriangulation::setupWindow()
 {
     if( !glfwInit() )
     {
@@ -199,37 +235,8 @@ void setupWindow()
     // A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
 }
 
-void createAllPoints(vector<float> *vertex_buffer_pointer, vector<float> *vertex_color_pointer)
-{
-    DrawObjects newCube;
-    BufferActions newBufferAction;
-    
-    for(int i = 0;i<numVertices;i++)
-    {
-        vec3 tempVec = nodeArray.at(i);
-        float xCoord(tempVec[0]);
-        float yCoord(tempVec[1]);
-        float zCoord(tempVec[2]);
-        
-        GLfloat new_cube_vertex_data[108];
-        for(int j=0;j<108;j++)
-        {
-            new_cube_vertex_data[j] = cube_vertex_data[j];
-        }
-        GLfloat* vertexPointer;
-        vertexPointer = new_cube_vertex_data;
-        GLfloat* colorPointer;
-        colorPointer = cube_color_data;
-        
-        g_cube_centers.push_back(xCoord);
-        g_cube_centers.push_back(yCoord);
-        g_cube_centers.push_back(zCoord);
-        newCube.createCubeWithTranslation(xCoord, yCoord, zCoord,.000002f, vertexPointer, &totalVertices);
-        newBufferAction.addObjectToBuffer(vertexPointer, colorPointer, 108, vertex_buffer_pointer, vertex_color_pointer);
-    }
-}
-
-void createAllTetrahedra()
+//Creates the tetrahedron for the tetgen library
+void DelaunayTriangulation::createAllTetrahedra()
 {
     for(int i = 0; i< numberOfTetrahedra;i++)
     {
@@ -248,7 +255,8 @@ void createAllTetrahedra()
     }
 }
 
-void setBuffers()
+//Sets the buffers for the vertices and for the colors
+void DelaunayTriangulation::setBuffers()
 {
     vertexBufferFloat = new float[g_vertex_buffer_data.size()]();
     colorBufferFloat = new float[g_color_buffer_data.size()]();
@@ -270,7 +278,8 @@ void setBuffers()
     glBufferData(GL_ARRAY_BUFFER, g_vertex_buffer_data.size()*4, colorBufferFloat, GL_STATIC_DRAW);
 }
 
-void drawLoop(int numberOfVertices, bool drawUsingTetgen)
+//Start the loop that draws the triangulation each second
+void DelaunayTriangulation::drawLoop(int numberOfVertices, bool drawUsingTetgen)
 {
     do{
         
@@ -371,8 +380,6 @@ void drawLoop(int numberOfVertices, bool drawUsingTetgen)
                 glVertex3f(triPoint2[0],triPoint2[1],triPoint2[2]);
                 glVertex3f(triPoint3[0],triPoint3[1],triPoint3[2]);
                 glEnd();
-                
-                //cout<<"Drawing Triangle#"<<i<<" of Vertices::("<<triPoint1[0]<<","<<triPoint1[1]<<","<<triPoint1[2]<<"),"<<"("<<triPoint2[0]<<","<<triPoint2[1]<<","<<triPoint2[2]<<")"<<",("<<triPoint3[0]<<","<<triPoint3[1]<<","<<triPoint3[2]<<")"<<endl;
             }
         }
         
@@ -390,7 +397,8 @@ void drawLoop(int numberOfVertices, bool drawUsingTetgen)
     //INSERT EVENT HANDLER HERE
 }
 
-void cleanup()
+//This cleans up the buffers for memory saving purposes.
+void DelaunayTriangulation::cleanup()
 {
     glDeleteBuffers(1, &vertexbuffer);
     glDeleteBuffers(1, &colorbuffer);
@@ -398,10 +406,4 @@ void cleanup()
     
     // Close OpenGL window and terminate GLFW
     glfwTerminate();
-}
-
-void setHullFaces(vector<vec3> *convexHullFaces)
-{
-    hullFaces = *convexHullFaces;
-    
 }
