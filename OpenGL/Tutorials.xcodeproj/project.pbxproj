@@ -1519,7 +1519,6 @@
 		0D4BC91A3C8A41678A1DE9A1 /* tangentspace.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = tangentspace.hpp; path = common/tangentspace.hpp; sourceTree = SOURCE_ROOT; };
 		0E1A7E691B33356C00D80F31 /* .DS_Store */ = {isa = PBXFileReference; lastKnownFileType = file; name = .DS_Store; path = tutorial04_colored_cube/.DS_Store; sourceTree = "<group>"; };
 		0E1A7E6A1B33356C00D80F31 /* attributeTest.node */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = attributeTest.node; path = tutorial04_colored_cube/attributeTest.node; sourceTree = "<group>"; };
-		0E1A7E6B1B33356D00D80F31 /* box.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = box.obj; path = tutorial04_colored_cube/box.obj; sourceTree = "<group>"; };
 		0E1A7E6C1B33356D00D80F31 /* BufferActions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BufferActions.cpp; path = tutorial04_colored_cube/BufferActions.cpp; sourceTree = "<group>"; };
 		0E1A7E6D1B33356D00D80F31 /* BufferActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BufferActions.h; path = tutorial04_colored_cube/BufferActions.h; sourceTree = "<group>"; };
 		0E1A7E6E1B33356D00D80F31 /* ColorFragmentShader.fragmentshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ColorFragmentShader.fragmentshader; path = tutorial04_colored_cube/ColorFragmentShader.fragmentshader; sourceTree = "<group>"; };
@@ -1536,11 +1535,6 @@
 		0E1A7E791B33356D00D80F31 /* randomNodes.ele */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = randomNodes.ele; path = tutorial04_colored_cube/randomNodes.ele; sourceTree = "<group>"; };
 		0E1A7E7A1B33356D00D80F31 /* randomNodes.node */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = randomNodes.node; path = tutorial04_colored_cube/randomNodes.node; sourceTree = "<group>"; };
 		0E1A7E7B1B33356D00D80F31 /* randomNodes.smesh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = randomNodes.smesh; path = tutorial04_colored_cube/randomNodes.smesh; sourceTree = "<group>"; };
-		0E1A7E7D1B33356D00D80F31 /* FarNear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FarNear.png; sourceTree = "<group>"; };
-		0E1A7E7E1B33356D00D80F31 /* missing_z_buffer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missing_z_buffer.png; sourceTree = "<group>"; };
-		0E1A7E7F1B33356D00D80F31 /* NearFar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NearFar.png; sourceTree = "<group>"; };
-		0E1A7E801B33356D00D80F31 /* NearFar.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NearFar.svg; sourceTree = "<group>"; };
-		0E1A7E811B33356D00D80F31 /* one_color_per_vertex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = one_color_per_vertex.png; sourceTree = "<group>"; };
 		0E1A7E821B33356D00D80F31 /* spine.node */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = spine.node; path = tutorial04_colored_cube/spine.node; sourceTree = "<group>"; };
 		0E1A7E831B33356D00D80F31 /* testfile.node */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testfile.node; path = tutorial04_colored_cube/testfile.node; sourceTree = "<group>"; };
 		0E1A7E841B33356D00D80F31 /* tetgen.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tetgen.cxx; path = tutorial04_colored_cube/tetgen.cxx; sourceTree = "<group>"; };
@@ -2816,17 +2810,47 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
-		0E1A7E7C1B33356D00D80F31 /* screenshots */ = {
+		0E8DD9BA1B3B221B00501BF2 /* Predicates */ = {
 			isa = PBXGroup;
 			children = (
-				0E1A7E7D1B33356D00D80F31 /* FarNear.png */,
-				0E1A7E7E1B33356D00D80F31 /* missing_z_buffer.png */,
-				0E1A7E7F1B33356D00D80F31 /* NearFar.png */,
-				0E1A7E801B33356D00D80F31 /* NearFar.svg */,
-				0E1A7E811B33356D00D80F31 /* one_color_per_vertex.png */,
+				0E1A7E771B33356D00D80F31 /* predicates.cxx */,
+				0E1A7E781B33356D00D80F31 /* predicates.o */,
 			);
-			name = screenshots;
-			path = tutorial04_colored_cube/screenshots;
+			name = Predicates;
+			sourceTree = "<group>";
+		};
+		0E8DD9BB1B3B222200501BF2 /* NodeFiles */ = {
+			isa = PBXGroup;
+			children = (
+				0E1A7E6A1B33356C00D80F31 /* attributeTest.node */,
+				0E1A7E791B33356D00D80F31 /* randomNodes.ele */,
+				0E1A7E7A1B33356D00D80F31 /* randomNodes.node */,
+				0E1A7E7B1B33356D00D80F31 /* randomNodes.smesh */,
+				0E1A7E821B33356D00D80F31 /* spine.node */,
+				0E1A7E831B33356D00D80F31 /* testfile.node */,
+			);
+			name = NodeFiles;
+			sourceTree = "<group>";
+		};
+		0E8DD9BC1B3B222F00501BF2 /* Tetgen */ = {
+			isa = PBXGroup;
+			children = (
+				0E1A7E841B33356D00D80F31 /* tetgen.cxx */,
+				0E1A7E851B33356D00D80F31 /* tetgen.h */,
+				0E1A7E861B33356D00D80F31 /* tetgen.o */,
+			);
+			name = Tetgen;
+			sourceTree = "<group>";
+		};
+		0E8DD9BE1B3B227200501BF2 /* TetFilesMisc */ = {
+			isa = PBXGroup;
+			children = (
+				0E1A7E741B33356D00D80F31 /* libtet.a */,
+				0E1A7E711B33356D00D80F31 /* edges.edge */,
+				0E1A7E731B33356D00D80F31 /* example.poly */,
+				0E1A7E721B33356D00D80F31 /* edges.ele */,
+			);
+			name = TetFilesMisc;
 			sourceTree = "<group>";
 		};
 		0EFABAC61B39A34E007A358F /* DelaunayTriangulate */ = {
@@ -3168,6 +3192,8 @@
 		2DA88833D1E04F08979498AB /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				0E1A7E6E1B33356D00D80F31 /* ColorFragmentShader.fragmentshader */,
+				0E1A7E871B33356D00D80F31 /* TransformVertexShader.vertexshader */,
 				627CFD10210A45818DC62EEA /* ColorFragmentShader.fragmentshader */,
 				732FAD222D3641389FB86DE8 /* TransformVertexShader.vertexshader */,
 			);
@@ -3189,29 +3215,14 @@
 			isa = PBXGroup;
 			children = (
 				0E1A7E691B33356C00D80F31 /* .DS_Store */,
-				0E1A7E6A1B33356C00D80F31 /* attributeTest.node */,
-				0E1A7E6B1B33356D00D80F31 /* box.obj */,
 				0EFABAE21B39E447007A358F /* BufferActions */,
-				0E1A7E6E1B33356D00D80F31 /* ColorFragmentShader.fragmentshader */,
 				0EFABAE31B39E44E007A358F /* DrawObjects */,
-				0E1A7E711B33356D00D80F31 /* edges.edge */,
-				0E1A7E731B33356D00D80F31 /* example.poly */,
-				0E1A7E721B33356D00D80F31 /* edges.ele */,
-				0E1A7E741B33356D00D80F31 /* libtet.a */,
+				0E8DD9BE1B3B227200501BF2 /* TetFilesMisc */,
 				0EFABAE41B39E458007A358F /* ParseClass */,
-				0E1A7E771B33356D00D80F31 /* predicates.cxx */,
-				0E1A7E781B33356D00D80F31 /* predicates.o */,
-				0E1A7E791B33356D00D80F31 /* randomNodes.ele */,
-				0E1A7E7A1B33356D00D80F31 /* randomNodes.node */,
-				0E1A7E7B1B33356D00D80F31 /* randomNodes.smesh */,
-				0E1A7E7C1B33356D00D80F31 /* screenshots */,
-				0E1A7E821B33356D00D80F31 /* spine.node */,
-				0E1A7E831B33356D00D80F31 /* testfile.node */,
-				0E1A7E841B33356D00D80F31 /* tetgen.cxx */,
-				0E1A7E851B33356D00D80F31 /* tetgen.h */,
-				0E1A7E861B33356D00D80F31 /* tetgen.o */,
+				0E8DD9BA1B3B221B00501BF2 /* Predicates */,
+				0E8DD9BB1B3B222200501BF2 /* NodeFiles */,
+				0E8DD9BC1B3B222F00501BF2 /* Tetgen */,
 				0EFABAC61B39A34E007A358F /* DelaunayTriangulate */,
-				0E1A7E871B33356D00D80F31 /* TransformVertexShader.vertexshader */,
 				0EFABADE1B39C218007A358F /* CGALDelaunay */,
 			);
 			name = "Source Files";
