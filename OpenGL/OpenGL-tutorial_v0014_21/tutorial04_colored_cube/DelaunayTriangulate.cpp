@@ -3,30 +3,42 @@
 int main( void )
 {
     //PARSE THROUGH NODE FILE AND GET ALL OF THE NODES
-    ParseClass::ParseNodeFile("spine.node", &nodeArray, &numVertices);
+    int nodeArraySize;
+    ParseClass::ParseNodeFile("firstThird.node", &nodeArray, &nodeArraySize);
     
     //RANDOMIZE SEED FOR WHEN GENERATING RANODM VALUES
     //generateRandomPoints(&nodeArray);
     
-    //SET UP INPUT TETGEN
-    DelaunayTriangulate(&nodeArray);
-
     setupWindow();
-    
-    vertex_buffer_pointer = &g_vertex_buffer_data;
-    vertex_color_pointer = &g_color_buffer_data;
-    
-    createAllPoints(vertex_buffer_pointer, vertex_color_pointer);
-    
-    createAllTetrahedra();
-    
-    setBuffers();
-    
-    drawLoop();
-    
-    cleanup();
+    //SET UP INPUT TETGEN
 
+    triangulate(false, &nodeArray, true, nodeArraySize);
+    
+    vector<vec3> secondThird;
+    int numberOfAddedPoints;
+    ParseClass::ParseNodeFile("secondThird.node", &secondThird, &numberOfAddedPoints);
+    
+    addPointsToTriangulation(&secondThird, numberOfAddedPoints);
+    
+    nowDraw = true;
+    vector<vec3> ThirdThird;
+    int numberOfAddedPointsLast;
+    ParseClass::ParseNodeFile("thirdThird.node", &ThirdThird, &numberOfAddedPointsLast);
+    
+    addPointsToTriangulation(&ThirdThird, numberOfAddedPointsLast);
+    //triangulateUsingTetgen(&nodeArray);
     return 0;
+}
+
+void addPointsToTriangulation(vector<vec3> * pointsToAdd, int numberOfPoints)
+{
+    CGALDelaunay::TriangulateUsingCGAL(pointsToAdd, &g_vertex_buffer_data, &g_color_buffer_data,&numberOfPoints,&VerticesToTriangulate, &VerticesToAdd,&numberOfPoints, &TriangulationOfPoints, &numVertices);
+    setBuffers();
+    if(nowDraw)
+    {
+        drawLoop(numVertices, false);
+        cleanup();
+    }
 }
 
 void generateRandomPoints(vector<vec3> *nodeArray)
@@ -40,6 +52,48 @@ void generateRandomPoints(vector<vec3> *nodeArray)
         vec3 tempVec(xCoord, yCoord, zCoord);
         nodeArray->push_back(tempVec);
     }
+}
+
+void triangulate(bool usingTetgen, vector<vec3>*nodeArray, bool pointsDynamicallyInserted, int nodeArraySize)
+{
+    if(usingTetgen)
+    {
+        triangulateUsingTetgen(nodeArray);
+    }
+    else
+    {
+        triangulateUsingCGAL(nodeArray, pointsDynamicallyInserted, nodeArraySize);
+    }
+}
+void triangulateUsingCGAL(vector<vec3> *nodeArrayPointer, bool pointsDynamicallyInserted, int nodeArraySize)
+{
+    /*
+     void CGALDelaunay::TriangulateUsingCGAL(vector<glm::vec3> *nodeArrayPointer, vector<float>* bufferPointer, vector<float> *colorPointer, int* numberOfVertices, std::list<Point> *VerticesToTriangulate, std::list<Point> * VerticesToAdd, int verticesAlreadyAdded, Triangulation* T)
+     */
+    int VerticesAlreadyAdded(VerticesToTriangulate.size());
+    CGALDelaunay::TriangulateUsingCGAL (nodeArrayPointer, &g_vertex_buffer_data, &g_color_buffer_data, &nodeArraySize, &VerticesToTriangulate, &VerticesToAdd, &VerticesAlreadyAdded, &TriangulationOfPoints, &numVertices);
+    setBuffers();
+    if(!pointsDynamicallyInserted)
+    {
+        drawLoop(numVertices, false);
+    }
+}
+void triangulateUsingTetgen(vector<vec3>*nodeArray)
+{
+    DelaunayTriangulate(nodeArray);
+    
+    vertex_buffer_pointer = &g_vertex_buffer_data;
+    vertex_color_pointer = &g_color_buffer_data;
+    
+    createAllPoints(vertex_buffer_pointer, vertex_color_pointer);
+    
+    createAllTetrahedra();
+    
+    setBuffers();
+    
+    drawLoop((numberOfTetrahedra*4) + totalVertices*3,true);
+    
+    cleanup();
 }
 
 void DelaunayTriangulate(vector<vec3> *nodeArray)
@@ -70,7 +124,7 @@ void DelaunayTriangulate(vector<vec3> *nodeArray)
     
     ParseClass::ParseEdgeFile((filePrefix+".ele"), &tetrahedraArray, &numberOfTetrahedra);
 
-    ParseClass::ParseFaceFile("convexhull.face", &faceArray, &numberOfTetrahedra);
+    //ParseClass::ParseFaceFile("convexhull.face", &faceArray, &numberOfTetrahedra);
     //out.save_edges(filePrefixChar);
     //out.save_nodes(filePrefixChar);
     
@@ -120,7 +174,7 @@ void setupWindow()
     
     
     
-    programID = LoadShaders( "windowNodeWithHole.node", "ColorFragmentShader.fragmentshader" );
+    programID = LoadShaders( "TransformVertexShader.vertexshader", "ColorFragmentShader.fragmentshader" );
     
     // Get a handle for our "MVP" uniform
     MatrixID = glGetUniformLocation(programID, "MVP");
@@ -132,7 +186,7 @@ void setupWindow()
     Projection = glm::perspective(90.0f, 4.0f / 3.0f, 0.1f, 300.0f);
     // Camera matrix
     View       = glm::lookAt(
-                                       glm::vec3(0,0,-5), // Camera is at (4,3,-3), in World Space
+                                       glm::vec3(50,50,-50), // Camera is at (4,3,-3), in World Space
                                        glm::vec3(0,0,0), // and looks at the origin
                                        glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
                                        );
@@ -216,7 +270,7 @@ void setBuffers()
     glBufferData(GL_ARRAY_BUFFER, g_vertex_buffer_data.size()*4, colorBufferFloat, GL_STATIC_DRAW);
 }
 
-void drawLoop()
+void drawLoop(int numberOfVertices, bool drawUsingTetgen)
 {
     do{
         
@@ -255,44 +309,71 @@ void drawLoop()
                               );
         
         // Draw the triangleS !
-        glDrawArrays(GL_TRIANGLES, 0, (totalVertices*3) + (numberOfTetrahedra*4)); // 12*3 indices starting at 0 -> 12 triangles
-        for(int i = 0; i< numberOfTetrahedra;i++)
+        glDrawArrays(GL_TRIANGLES, 0, numberOfVertices); // 12*3 indices starting at 0 -> 12 triangles
+        
+        glLineWidth(2.5);
+        glColor3f(1.0, 0.0, 0.0);
+        
+        if(drawUsingTetgen)
         {
-            //PROBLEM AREA
-            vector<vec3> tetPoints;
-            vec3 tetPoint1(nodeArray.at((tetrahedraArray.at(i*4))));
-            vec3 tetPoint2(nodeArray.at((tetrahedraArray.at((i*4)+1))));
-            vec3 tetPoint3(nodeArray.at((tetrahedraArray.at((i*4)+2))));
-            vec3 tetPoint4(nodeArray.at((tetrahedraArray.at((i*4)+3))));
             
-            glLineWidth(2.5);
-            glColor3f(1.0, 0.0, 0.0);
-            
-            glBegin(GL_LINES);
-            glVertex3f(tetPoint1[0],tetPoint1[1],tetPoint1[2]);
-            glVertex3f(tetPoint2[0],tetPoint2[1],tetPoint2[2]);
-            glEnd();
-            glBegin(GL_LINES);
-            glVertex3f(tetPoint1[0],tetPoint1[1],tetPoint1[2]);
-            glVertex3f(tetPoint3[0],tetPoint3[1],tetPoint3[2]);
-            glEnd();
-            glBegin(GL_LINES);
-            glVertex3f(tetPoint1[0],tetPoint1[1],tetPoint1[2]);
-            glVertex3f(tetPoint4[0],tetPoint4[1],tetPoint4[2]);
-            glEnd();
-            glBegin(GL_LINES);
-            glVertex3f(tetPoint2[0],tetPoint2[1],tetPoint2[2]);
-            glVertex3f(tetPoint3[0],tetPoint3[1],tetPoint3[2]);
-            glEnd();
-            glBegin(GL_LINES);
-            glVertex3f(tetPoint3[0],tetPoint3[1],tetPoint3[2]);
-            glVertex3f(tetPoint4[0],tetPoint4[1],tetPoint4[2]);
-            glEnd();
-            glBegin(GL_LINES);
-            glVertex3f(tetPoint2[0],tetPoint2[1],tetPoint2[2]);
-            glVertex3f(tetPoint4[0],tetPoint4[1],tetPoint4[2]);
-            glEnd();
-            
+            for(int i = 0; i< numberOfTetrahedra;i++)
+            {
+                vector<vec3> tetPoints;
+                vec3 tetPoint1(nodeArray.at((tetrahedraArray.at(i*4))));
+                vec3 tetPoint2(nodeArray.at((tetrahedraArray.at((i*4)+1))));
+                vec3 tetPoint3(nodeArray.at((tetrahedraArray.at((i*4)+2))));
+                vec3 tetPoint4(nodeArray.at((tetrahedraArray.at((i*4)+3))));
+                
+                glBegin(GL_LINES);
+                glVertex3f(tetPoint1[0],tetPoint1[1],tetPoint1[2]);
+                glVertex3f(tetPoint2[0],tetPoint2[1],tetPoint2[2]);
+                glEnd();
+                glBegin(GL_LINES);
+                glVertex3f(tetPoint1[0],tetPoint1[1],tetPoint1[2]);
+                glVertex3f(tetPoint3[0],tetPoint3[1],tetPoint3[2]);
+                glEnd();
+                glBegin(GL_LINES);
+                glVertex3f(tetPoint1[0],tetPoint1[1],tetPoint1[2]);
+                glVertex3f(tetPoint4[0],tetPoint4[1],tetPoint4[2]);
+                glEnd();
+                glBegin(GL_LINES);
+                glVertex3f(tetPoint2[0],tetPoint2[1],tetPoint2[2]);
+                glVertex3f(tetPoint3[0],tetPoint3[1],tetPoint3[2]);
+                glEnd();
+                glBegin(GL_LINES);
+                glVertex3f(tetPoint3[0],tetPoint3[1],tetPoint3[2]);
+                glVertex3f(tetPoint4[0],tetPoint4[1],tetPoint4[2]);
+                glEnd();
+                glBegin(GL_LINES);
+                glVertex3f(tetPoint2[0],tetPoint2[1],tetPoint2[2]);
+                glVertex3f(tetPoint4[0],tetPoint4[1],tetPoint4[2]);
+                glEnd();
+                
+            }
+        }
+        else
+        {
+            for(int i = 0; i< numberOfVertices/3;i++)
+            {
+                vec3 triPoint1(g_vertex_buffer_data.at(i*9),g_vertex_buffer_data.at((i*9)+1), g_vertex_buffer_data.at((i*9)+2));
+                vec3 triPoint2(g_vertex_buffer_data.at((i*9)+3),g_vertex_buffer_data.at((i*9)+4), g_vertex_buffer_data.at((i*9)+5));
+                vec3 triPoint3(g_vertex_buffer_data.at((i*9)+6),g_vertex_buffer_data.at((i*9)+7), g_vertex_buffer_data.at((i*9)+8));
+                glBegin(GL_LINES);
+                glVertex3f(triPoint1[0],triPoint1[1],triPoint1[2]);
+                glVertex3f(triPoint2[0],triPoint2[1],triPoint2[2]);
+                glEnd();
+                glBegin(GL_LINES);
+                glVertex3f(triPoint1[0],triPoint1[1],triPoint1[2]);
+                glVertex3f(triPoint3[0],triPoint3[1],triPoint3[2]);
+                glEnd();
+                glBegin(GL_LINES);
+                glVertex3f(triPoint2[0],triPoint2[1],triPoint2[2]);
+                glVertex3f(triPoint3[0],triPoint3[1],triPoint3[2]);
+                glEnd();
+                
+                //cout<<"Drawing Triangle#"<<i<<" of Vertices::("<<triPoint1[0]<<","<<triPoint1[1]<<","<<triPoint1[2]<<"),"<<"("<<triPoint2[0]<<","<<triPoint2[1]<<","<<triPoint2[2]<<")"<<",("<<triPoint3[0]<<","<<triPoint3[1]<<","<<triPoint3[2]<<")"<<endl;
+            }
         }
         
         glDisableVertexAttribArray(vertexPosition_modelspaceID);
@@ -306,6 +387,7 @@ void drawLoop()
     } // Check if the ESC key was pressed or the window was closed
     while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
           glfwWindowShouldClose(window) == 0 );
+    //INSERT EVENT HANDLER HERE
 }
 
 void cleanup()

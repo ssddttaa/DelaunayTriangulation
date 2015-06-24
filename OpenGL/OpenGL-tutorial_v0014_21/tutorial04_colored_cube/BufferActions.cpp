@@ -27,5 +27,7 @@ void BufferActions::addVec3ToBuffer(int * arrayOfVec3, vector<float> *buffer_poi
         buffer_pointer->push_back(tempVec[0]);
         buffer_pointer->push_back(tempVec[1]);
         buffer_pointer->push_back(tempVec[2]);
+        
+        //cout<<"Pushing back coordinate:("<<tempVec[0]<<","<<tempVec[1]<<","<<tempVec[2]<<")"<<endl;
     }
 }

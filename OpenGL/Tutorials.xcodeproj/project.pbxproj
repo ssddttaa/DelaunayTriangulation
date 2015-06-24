@@ -111,8 +111,16 @@
 		0E1A7E8C1B33356D00D80F31 /* ParseClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E751B33356D00D80F31 /* ParseClass.cpp */; };
 		0E1A7E8D1B33356D00D80F31 /* predicates.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E771B33356D00D80F31 /* predicates.cxx */; };
 		0E1A7E8E1B33356D00D80F31 /* tetgen.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E841B33356D00D80F31 /* tetgen.cxx */; };
-		0E1A7E931B33360100D80F31 /* DelaunayTriangulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E921B33360000D80F31 /* DelaunayTriangulate.cpp */; };
 		0EA0A0CB1405484B82CB6903 /* Q3BSPFileParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C38FD9BC0B994247AF3669BA /* Q3BSPFileParser.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		0EFABACA1B39C03F007A358F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFABAC91B39C03F007A358F /* Cocoa.framework */; };
+		0EFABACC1B39C05C007A358F /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFABACB1B39C05C007A358F /* libboost_thread-mt.dylib */; };
+		0EFABAD01B39C08D007A358F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFABACF1B39C08D007A358F /* OpenGL.framework */; };
+		0EFABAD31B39C0E0007A358F /* libCGAL_Core.11.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFABAD11B39C0DF007A358F /* libCGAL_Core.11.0.0.dylib */; };
+		0EFABAD41B39C0E0007A358F /* libCGAL.11.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFABAD21B39C0E0007A358F /* libCGAL.11.0.0.dylib */; };
+		0EFABAD71B39C116007A358F /* libgmp.10.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFABAD51B39C115007A358F /* libgmp.10.dylib */; };
+		0EFABAD81B39C116007A358F /* libmpfr.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFABAD61B39C115007A358F /* libmpfr.4.dylib */; };
+		0EFABAE01B39DD14007A358F /* DelaunayTriangulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E921B33360000D80F31 /* DelaunayTriangulate.cpp */; };
+		0EFABAE11B39DDFC007A358F /* CGALDelaunayTriangulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EFABADB1B39C210007A358F /* CGALDelaunayTriangulation.cpp */; };
 		0F1E0A8408524C93A380CD1C /* btHingeConstraint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F83B35F798ED4E1293C06A00 /* btHingeConstraint.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		0F30DB01F8D94D109387F18D /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 6E2562B0856B46B8B53B32D6 /* inflate.c */; settings = {COMPILER_FLAGS = ""; }; };
 		0F4DC95D962F423EB29D1697 /* btCompoundShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C832A5C71C64819BE932AEA /* btCompoundShape.cpp */; settings = {COMPILER_FLAGS = ""; }; };
@@ -1545,6 +1553,16 @@
 		0E64EE26863243DAA8902674 /* camera.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = camera.h; path = "external/assimp-3.0.1270/include/assimp/camera.h"; sourceTree = SOURCE_ROOT; };
 		0EDB985C76054A19BDF9DC05 /* controls.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = controls.hpp; path = common/controls.hpp; sourceTree = SOURCE_ROOT; };
 		0EE4729F047041A0A5956D8C /* OFFLoader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OFFLoader.h; path = "external/assimp-3.0.1270/code/OFFLoader.h"; sourceTree = SOURCE_ROOT; };
+		0EFABAC91B39C03F007A358F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0EFABACB1B39C05C007A358F /* libboost_thread-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_thread-mt.dylib"; path = "../../../../../../../../../opt/local/lib/libboost_thread-mt.dylib"; sourceTree = "<group>"; };
+		0EFABACD1B39C081007A358F /* libglfw.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.1.dylib; path = ../../../../../../../../../opt/local/lib/libglfw.3.1.dylib; sourceTree = "<group>"; };
+		0EFABACF1B39C08D007A358F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		0EFABAD11B39C0DF007A358F /* libCGAL_Core.11.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libCGAL_Core.11.0.0.dylib; path = ../../../../../../../../../opt/local/lib/libCGAL_Core.11.0.0.dylib; sourceTree = "<group>"; };
+		0EFABAD21B39C0E0007A358F /* libCGAL.11.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libCGAL.11.0.0.dylib; path = ../../../../../../../../../opt/local/lib/libCGAL.11.0.0.dylib; sourceTree = "<group>"; };
+		0EFABAD51B39C115007A358F /* libgmp.10.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgmp.10.dylib; path = ../../../../../../../../../opt/local/lib/libgmp.10.dylib; sourceTree = "<group>"; };
+		0EFABAD61B39C115007A358F /* libmpfr.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmpfr.4.dylib; path = ../../../../../../../../../opt/local/lib/libmpfr.4.dylib; sourceTree = "<group>"; };
+		0EFABADB1B39C210007A358F /* CGALDelaunayTriangulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CGALDelaunayTriangulation.cpp; path = tutorial04_colored_cube/CGALDelaunayTriangulation.cpp; sourceTree = "<group>"; };
+		0EFABADC1B39C210007A358F /* CGALDelaunayTriangulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGALDelaunayTriangulation.h; path = tutorial04_colored_cube/CGALDelaunayTriangulation.h; sourceTree = "<group>"; };
 		0EFE0ECDBAB74D8495EEBCEA /* cocoa_gamma.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = cocoa_gamma.c; path = "external/glfw-3.0.3/src/cocoa_gamma.c"; sourceTree = SOURCE_ROOT; };
 		0F09FB442C38494F8C820650 /* MDLMaterialLoader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MDLMaterialLoader.cpp; path = "external/assimp-3.0.1270/code/MDLMaterialLoader.cpp"; sourceTree = SOURCE_ROOT; };
 		0F1F24C4C7A547659CA04792 /* btUniversalConstraint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = btUniversalConstraint.cpp; path = "external/bullet-2.81-rev2613/src/BulletDynamics/ConstraintSolver/btUniversalConstraint.cpp"; sourceTree = SOURCE_ROOT; };
@@ -2578,6 +2596,23 @@
 		FFE60C1A7A8C4AF08071D1EF /* btPersistentManifold.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = btPersistentManifold.cpp; path = "external/bullet-2.81-rev2613/src/BulletCollision/NarrowPhaseCollision/btPersistentManifold.cpp"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		0EFABAC81B39C015007A358F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EFABAD71B39C116007A358F /* libgmp.10.dylib in Frameworks */,
+				0EFABAD81B39C116007A358F /* libmpfr.4.dylib in Frameworks */,
+				0EFABAD31B39C0E0007A358F /* libCGAL_Core.11.0.0.dylib in Frameworks */,
+				0EFABAD41B39C0E0007A358F /* libCGAL.11.0.0.dylib in Frameworks */,
+				0EFABAD01B39C08D007A358F /* OpenGL.framework in Frameworks */,
+				0EFABACC1B39C05C007A358F /* libboost_thread-mt.dylib in Frameworks */,
+				0EFABACA1B39C03F007A358F /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		001DA365B1B144B7A33EBDEE /* Source Files */ = {
 			isa = PBXGroup;
@@ -2794,6 +2829,51 @@
 			path = tutorial04_colored_cube/screenshots;
 			sourceTree = "<group>";
 		};
+		0EFABAC61B39A34E007A358F /* DelaunayTriangulate */ = {
+			isa = PBXGroup;
+			children = (
+				0E1A7E921B33360000D80F31 /* DelaunayTriangulate.cpp */,
+				0E1CBCF11B3859E00074AF24 /* DelaunayTriangulate.h */,
+			);
+			name = DelaunayTriangulate;
+			sourceTree = "<group>";
+		};
+		0EFABADE1B39C218007A358F /* CGALDelaunay */ = {
+			isa = PBXGroup;
+			children = (
+				0EFABADB1B39C210007A358F /* CGALDelaunayTriangulation.cpp */,
+				0EFABADC1B39C210007A358F /* CGALDelaunayTriangulation.h */,
+			);
+			name = CGALDelaunay;
+			sourceTree = "<group>";
+		};
+		0EFABAE21B39E447007A358F /* BufferActions */ = {
+			isa = PBXGroup;
+			children = (
+				0E1A7E6C1B33356D00D80F31 /* BufferActions.cpp */,
+				0E1A7E6D1B33356D00D80F31 /* BufferActions.h */,
+			);
+			name = BufferActions;
+			sourceTree = "<group>";
+		};
+		0EFABAE31B39E44E007A358F /* DrawObjects */ = {
+			isa = PBXGroup;
+			children = (
+				0E1A7E6F1B33356D00D80F31 /* DrawObjects.cpp */,
+				0E1A7E701B33356D00D80F31 /* DrawObjects.h */,
+			);
+			name = DrawObjects;
+			sourceTree = "<group>";
+		};
+		0EFABAE41B39E458007A358F /* ParseClass */ = {
+			isa = PBXGroup;
+			children = (
+				0E1A7E751B33356D00D80F31 /* ParseClass.cpp */,
+				0E1A7E761B33356D00D80F31 /* ParseClass.h */,
+			);
+			name = ParseClass;
+			sourceTree = "<group>";
+		};
 		10594953A6894F468A68407F /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -2851,6 +2931,14 @@
 		14A1F3CB080941048A4008CE = {
 			isa = PBXGroup;
 			children = (
+				0EFABAD51B39C115007A358F /* libgmp.10.dylib */,
+				0EFABAD61B39C115007A358F /* libmpfr.4.dylib */,
+				0EFABAD11B39C0DF007A358F /* libCGAL_Core.11.0.0.dylib */,
+				0EFABAD21B39C0E0007A358F /* libCGAL.11.0.0.dylib */,
+				0EFABACF1B39C08D007A358F /* OpenGL.framework */,
+				0EFABACD1B39C081007A358F /* libglfw.3.1.dylib */,
+				0EFABACB1B39C05C007A358F /* libboost_thread-mt.dylib */,
+				0EFABAC91B39C03F007A358F /* Cocoa.framework */,
 				461F3CEB4FD54D2C815C2D3B /* Sources */,
 				BB0A1F57F15D4E44B2E36CEF /* Resources */,
 				2713A1E2AF1B4C6299E640CF /* Products */,
@@ -3103,17 +3191,14 @@
 				0E1A7E691B33356C00D80F31 /* .DS_Store */,
 				0E1A7E6A1B33356C00D80F31 /* attributeTest.node */,
 				0E1A7E6B1B33356D00D80F31 /* box.obj */,
-				0E1A7E6C1B33356D00D80F31 /* BufferActions.cpp */,
-				0E1A7E6D1B33356D00D80F31 /* BufferActions.h */,
+				0EFABAE21B39E447007A358F /* BufferActions */,
 				0E1A7E6E1B33356D00D80F31 /* ColorFragmentShader.fragmentshader */,
-				0E1A7E6F1B33356D00D80F31 /* DrawObjects.cpp */,
-				0E1A7E701B33356D00D80F31 /* DrawObjects.h */,
+				0EFABAE31B39E44E007A358F /* DrawObjects */,
 				0E1A7E711B33356D00D80F31 /* edges.edge */,
 				0E1A7E731B33356D00D80F31 /* example.poly */,
 				0E1A7E721B33356D00D80F31 /* edges.ele */,
 				0E1A7E741B33356D00D80F31 /* libtet.a */,
-				0E1A7E751B33356D00D80F31 /* ParseClass.cpp */,
-				0E1A7E761B33356D00D80F31 /* ParseClass.h */,
+				0EFABAE41B39E458007A358F /* ParseClass */,
 				0E1A7E771B33356D00D80F31 /* predicates.cxx */,
 				0E1A7E781B33356D00D80F31 /* predicates.o */,
 				0E1A7E791B33356D00D80F31 /* randomNodes.ele */,
@@ -3125,9 +3210,9 @@
 				0E1A7E841B33356D00D80F31 /* tetgen.cxx */,
 				0E1A7E851B33356D00D80F31 /* tetgen.h */,
 				0E1A7E861B33356D00D80F31 /* tetgen.o */,
-				0E1A7E921B33360000D80F31 /* DelaunayTriangulate.cpp */,
+				0EFABAC61B39A34E007A358F /* DelaunayTriangulate */,
 				0E1A7E871B33356D00D80F31 /* TransformVertexShader.vertexshader */,
-				0E1CBCF11B3859E00074AF24 /* DelaunayTriangulate.h */,
+				0EFABADE1B39C218007A358F /* CGALDelaunay */,
 			);
 			name = "Source Files";
 			sourceTree = "<group>";
@@ -5209,6 +5294,7 @@
 			buildConfigurationList = C16BF100B46A4DC08A1F5531 /* Build configuration list for PBXNativeTarget "tutorial04_colored_cube" */;
 			buildPhases = (
 				7614E251A1724E42A5058600 /* Sources */,
+				0EFABAC81B39C015007A358F /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -6265,12 +6351,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E1A7E8E1B33356D00D80F31 /* tetgen.cxx in Sources */,
+				0EFABAE11B39DDFC007A358F /* CGALDelaunayTriangulation.cpp in Sources */,
 				0E1A7E8B1B33356D00D80F31 /* DrawObjects.cpp in Sources */,
 				72C351A469BA407F915E64CB /* shader.cpp in Sources */,
-				0E1A7E931B33360100D80F31 /* DelaunayTriangulate.cpp in Sources */,
 				0E1A7E8C1B33356D00D80F31 /* ParseClass.cpp in Sources */,
 				0E1A7E8A1B33356D00D80F31 /* BufferActions.cpp in Sources */,
 				0E1A7E8D1B33356D00D80F31 /* predicates.cxx in Sources */,
+				0EFABAE01B39DD14007A358F /* DelaunayTriangulate.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7957,6 +8044,236 @@
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/assimp-3.0.1270/include\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/bullet-2.81-rev2613/src\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/.\"",
+					"#include",
+					"<CGAL/Exact_predicates_inexact_constructions_kernel.h>\n#include",
+					"<CGAL/Triangulation_3.h>\n#include",
+					"<iostream>\n#include",
+					"<fstream>\n#include",
+					"<cassert>\n#include",
+					"<list>\n#include",
+					"<vector>\ntypedef",
+					"CGAL::Exact_predicates_inexact_constructions_kernel",
+					"K;\ntypedef",
+					"CGAL::Triangulation_3<K>",
+					"Triangulation;\ntypedef",
+					"Triangulation::Cell_handle",
+					"Cell_handle;\ntypedef",
+					"Triangulation::Vertex_handle",
+					"Vertex_handle;\ntypedef",
+					"Triangulation::Locate_type",
+					"Locate_type;\ntypedef",
+					"Triangulation::Point",
+					"Point;\nint",
+					"main()\n{\n",
+					"//",
+					construction,
+					from,
+					a,
+					list,
+					of,
+					points,
+					":
+",
+					"std::list<Point>",
+					"L;
+",
+					"L.push_front(Point(0,0,0));\n",
+					"L.push_front(Point(1,0,0));\n",
+					"L.push_front(Point(0,1,0));\n",
+					Triangulation,
+					"T(L.begin(),",
+					"L.end());\n",
+					"Triangulation::size_type",
+					n,
+					"=",
+					"T.number_of_vertices();\n",
+					"//",
+					insertion,
+					from,
+					a,
+					vector,
+					":
+",
+					"std::vector<Point>",
+					"V(3);\n",
+					"V[0]",
+					"=",
+					"Point(0,0,1);\n",
+					"V[1]",
+					"=",
+					"Point(1,1,1);\n",
+					"V[2]",
+					"=",
+					"Point(2,2,2);\n",
+					n,
+					"=",
+					n,
+					"+",
+					"T.insert(V.begin(),",
+					"V.end());\n",
+					"assert(",
+					n,
+					"==",
+					6,
+					");",
+					"//",
+					6,
+					points,
+					have,
+					been,
+					"inserted\n",
+					"assert(",
+					"T.is_valid()",
+					");",
+					"//",
+					checking,
+					validity,
+					of,
+					"T
+",
+					Locate_type,
+					"lt;
+",
+					int,
+					"li,",
+					"lj;
+",
+					Point,
+					"p(0,0,0);\n",
+					Cell_handle,
+					c,
+					"=",
+					"T.locate(p,",
+					"lt,",
+					"li,",
+					"lj);
+",
+					"//",
+					p,
+					is,
+					the,
+					vertex,
+					of,
+					c,
+					of,
+					index,
+					li,
+					":
+",
+					"assert(",
+					lt,
+					"==",
+					"Triangulation::VERTEX",
+					");
+",
+					"assert(",
+					"c->vertex(li)->point()",
+					"==",
+					p,
+					");
+",
+					Vertex_handle,
+					v,
+					"=",
+					"c->vertex(",
+					"(li+1)&3",
+					");
+",
+					"//",
+					v,
+					is,
+					another,
+					vertex,
+					of,
+					"c
+",
+					Cell_handle,
+					nc,
+					"=",
+					"c->neighbor(li);\n",
+					"//",
+					nc,
+					"=",
+					neighbor,
+					of,
+					c,
+					opposite,
+					to,
+					the,
+					vertex,
+					associated,
+					with,
+					"p
+",
+					"//",
+					nc,
+					must,
+					have,
+					vertex,
+					v,
+					":
+",
+					int,
+					"nli;
+",
+					"assert(",
+					"nc->has_vertex(",
+					"v,",
+					nli,
+					")",
+					");
+",
+					"//",
+					nli,
+					is,
+					the,
+					index,
+					of,
+					v,
+					in,
+					"nc
+",
+					"std::ofstream",
+					"oFileT(\"output\",std::ios::out);\n",
+					"//",
+					writing,
+					file,
+					"output;\n",
+					oFileT,
+					"<<",
+					"T;
+",
+					Triangulation,
+					"T1;
+",
+					"std::ifstream",
+					"iFileT(\"output\",std::ios::in);\n",
+					"//",
+					reading,
+					file,
+					"output;\n",
+					iFileT,
+					">>",
+					"T1;
+",
+					"assert(",
+					"T1.is_valid()",
+					");
+",
+					"assert(",
+					"T1.number_of_vertices()",
+					"==",
+					"T.number_of_vertices()",
+					");
+",
+					"assert(",
+					"T1.number_of_cells()",
+					"==",
+					"T.number_of_cells()",
+					");
+",
+					return,
+					"0;\n/usr/local/include",
 				);
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
@@ -8589,9 +8906,10 @@
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/assimp-3.0.1270/include\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/bullet-2.81-rev2613/src\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/.\"",
+					/usr/local/include,
 				);
 				INSTALL_PATH = "";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /opt/local/lib;
 				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
 				OTHER_LDFLAGS = (
 					"-Wl,-search_paths_first",
@@ -10553,6 +10871,236 @@
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/assimp-3.0.1270/include\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/bullet-2.81-rev2613/src\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/.\"",
+					"#include",
+					"<CGAL/Exact_predicates_inexact_constructions_kernel.h>\n#include",
+					"<CGAL/Triangulation_3.h>\n#include",
+					"<iostream>\n#include",
+					"<fstream>\n#include",
+					"<cassert>\n#include",
+					"<list>\n#include",
+					"<vector>\ntypedef",
+					"CGAL::Exact_predicates_inexact_constructions_kernel",
+					"K;\ntypedef",
+					"CGAL::Triangulation_3<K>",
+					"Triangulation;\ntypedef",
+					"Triangulation::Cell_handle",
+					"Cell_handle;\ntypedef",
+					"Triangulation::Vertex_handle",
+					"Vertex_handle;\ntypedef",
+					"Triangulation::Locate_type",
+					"Locate_type;\ntypedef",
+					"Triangulation::Point",
+					"Point;\nint",
+					"main()\n{\n",
+					"//",
+					construction,
+					from,
+					a,
+					list,
+					of,
+					points,
+					":
+",
+					"std::list<Point>",
+					"L;
+",
+					"L.push_front(Point(0,0,0));\n",
+					"L.push_front(Point(1,0,0));\n",
+					"L.push_front(Point(0,1,0));\n",
+					Triangulation,
+					"T(L.begin(),",
+					"L.end());\n",
+					"Triangulation::size_type",
+					n,
+					"=",
+					"T.number_of_vertices();\n",
+					"//",
+					insertion,
+					from,
+					a,
+					vector,
+					":
+",
+					"std::vector<Point>",
+					"V(3);\n",
+					"V[0]",
+					"=",
+					"Point(0,0,1);\n",
+					"V[1]",
+					"=",
+					"Point(1,1,1);\n",
+					"V[2]",
+					"=",
+					"Point(2,2,2);\n",
+					n,
+					"=",
+					n,
+					"+",
+					"T.insert(V.begin(),",
+					"V.end());\n",
+					"assert(",
+					n,
+					"==",
+					6,
+					");",
+					"//",
+					6,
+					points,
+					have,
+					been,
+					"inserted\n",
+					"assert(",
+					"T.is_valid()",
+					");",
+					"//",
+					checking,
+					validity,
+					of,
+					"T
+",
+					Locate_type,
+					"lt;
+",
+					int,
+					"li,",
+					"lj;
+",
+					Point,
+					"p(0,0,0);\n",
+					Cell_handle,
+					c,
+					"=",
+					"T.locate(p,",
+					"lt,",
+					"li,",
+					"lj);
+",
+					"//",
+					p,
+					is,
+					the,
+					vertex,
+					of,
+					c,
+					of,
+					index,
+					li,
+					":
+",
+					"assert(",
+					lt,
+					"==",
+					"Triangulation::VERTEX",
+					");
+",
+					"assert(",
+					"c->vertex(li)->point()",
+					"==",
+					p,
+					");
+",
+					Vertex_handle,
+					v,
+					"=",
+					"c->vertex(",
+					"(li+1)&3",
+					");
+",
+					"//",
+					v,
+					is,
+					another,
+					vertex,
+					of,
+					"c
+",
+					Cell_handle,
+					nc,
+					"=",
+					"c->neighbor(li);\n",
+					"//",
+					nc,
+					"=",
+					neighbor,
+					of,
+					c,
+					opposite,
+					to,
+					the,
+					vertex,
+					associated,
+					with,
+					"p
+",
+					"//",
+					nc,
+					must,
+					have,
+					vertex,
+					v,
+					":
+",
+					int,
+					"nli;
+",
+					"assert(",
+					"nc->has_vertex(",
+					"v,",
+					nli,
+					")",
+					");
+",
+					"//",
+					nli,
+					is,
+					the,
+					index,
+					of,
+					v,
+					in,
+					"nc
+",
+					"std::ofstream",
+					"oFileT(\"output\",std::ios::out);\n",
+					"//",
+					writing,
+					file,
+					"output;\n",
+					oFileT,
+					"<<",
+					"T;
+",
+					Triangulation,
+					"T1;
+",
+					"std::ifstream",
+					"iFileT(\"output\",std::ios::in);\n",
+					"//",
+					reading,
+					file,
+					"output;\n",
+					iFileT,
+					">>",
+					"T1;
+",
+					"assert(",
+					"T1.is_valid()",
+					");
+",
+					"assert(",
+					"T1.number_of_vertices()",
+					"==",
+					"T.number_of_vertices()",
+					");
+",
+					"assert(",
+					"T1.number_of_cells()",
+					"==",
+					"T.number_of_cells()",
+					");
+",
+					return,
+					"0;\n/usr/local/include",
 				);
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
@@ -11127,9 +11675,10 @@
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/assimp-3.0.1270/include\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/bullet-2.81-rev2613/src\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/.\"",
+					/usr/local/include,
 				);
 				INSTALL_PATH = "";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /opt/local/lib;
 				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
 				OTHER_LDFLAGS = (
 					"-Wl,-search_paths_first",
@@ -11623,6 +12172,236 @@
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/assimp-3.0.1270/include\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/bullet-2.81-rev2613/src\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/.\"",
+					"#include",
+					"<CGAL/Exact_predicates_inexact_constructions_kernel.h>\n#include",
+					"<CGAL/Triangulation_3.h>\n#include",
+					"<iostream>\n#include",
+					"<fstream>\n#include",
+					"<cassert>\n#include",
+					"<list>\n#include",
+					"<vector>\ntypedef",
+					"CGAL::Exact_predicates_inexact_constructions_kernel",
+					"K;\ntypedef",
+					"CGAL::Triangulation_3<K>",
+					"Triangulation;\ntypedef",
+					"Triangulation::Cell_handle",
+					"Cell_handle;\ntypedef",
+					"Triangulation::Vertex_handle",
+					"Vertex_handle;\ntypedef",
+					"Triangulation::Locate_type",
+					"Locate_type;\ntypedef",
+					"Triangulation::Point",
+					"Point;\nint",
+					"main()\n{\n",
+					"//",
+					construction,
+					from,
+					a,
+					list,
+					of,
+					points,
+					":
+",
+					"std::list<Point>",
+					"L;
+",
+					"L.push_front(Point(0,0,0));\n",
+					"L.push_front(Point(1,0,0));\n",
+					"L.push_front(Point(0,1,0));\n",
+					Triangulation,
+					"T(L.begin(),",
+					"L.end());\n",
+					"Triangulation::size_type",
+					n,
+					"=",
+					"T.number_of_vertices();\n",
+					"//",
+					insertion,
+					from,
+					a,
+					vector,
+					":
+",
+					"std::vector<Point>",
+					"V(3);\n",
+					"V[0]",
+					"=",
+					"Point(0,0,1);\n",
+					"V[1]",
+					"=",
+					"Point(1,1,1);\n",
+					"V[2]",
+					"=",
+					"Point(2,2,2);\n",
+					n,
+					"=",
+					n,
+					"+",
+					"T.insert(V.begin(),",
+					"V.end());\n",
+					"assert(",
+					n,
+					"==",
+					6,
+					");",
+					"//",
+					6,
+					points,
+					have,
+					been,
+					"inserted\n",
+					"assert(",
+					"T.is_valid()",
+					");",
+					"//",
+					checking,
+					validity,
+					of,
+					"T
+",
+					Locate_type,
+					"lt;
+",
+					int,
+					"li,",
+					"lj;
+",
+					Point,
+					"p(0,0,0);\n",
+					Cell_handle,
+					c,
+					"=",
+					"T.locate(p,",
+					"lt,",
+					"li,",
+					"lj);
+",
+					"//",
+					p,
+					is,
+					the,
+					vertex,
+					of,
+					c,
+					of,
+					index,
+					li,
+					":
+",
+					"assert(",
+					lt,
+					"==",
+					"Triangulation::VERTEX",
+					");
+",
+					"assert(",
+					"c->vertex(li)->point()",
+					"==",
+					p,
+					");
+",
+					Vertex_handle,
+					v,
+					"=",
+					"c->vertex(",
+					"(li+1)&3",
+					");
+",
+					"//",
+					v,
+					is,
+					another,
+					vertex,
+					of,
+					"c
+",
+					Cell_handle,
+					nc,
+					"=",
+					"c->neighbor(li);\n",
+					"//",
+					nc,
+					"=",
+					neighbor,
+					of,
+					c,
+					opposite,
+					to,
+					the,
+					vertex,
+					associated,
+					with,
+					"p
+",
+					"//",
+					nc,
+					must,
+					have,
+					vertex,
+					v,
+					":
+",
+					int,
+					"nli;
+",
+					"assert(",
+					"nc->has_vertex(",
+					"v,",
+					nli,
+					")",
+					");
+",
+					"//",
+					nli,
+					is,
+					the,
+					index,
+					of,
+					v,
+					in,
+					"nc
+",
+					"std::ofstream",
+					"oFileT(\"output\",std::ios::out);\n",
+					"//",
+					writing,
+					file,
+					"output;\n",
+					oFileT,
+					"<<",
+					"T;
+",
+					Triangulation,
+					"T1;
+",
+					"std::ifstream",
+					"iFileT(\"output\",std::ios::in);\n",
+					"//",
+					reading,
+					file,
+					"output;\n",
+					iFileT,
+					">>",
+					"T1;
+",
+					"assert(",
+					"T1.is_valid()",
+					");
+",
+					"assert(",
+					"T1.number_of_vertices()",
+					"==",
+					"T.number_of_vertices()",
+					");
+",
+					"assert(",
+					"T1.number_of_cells()",
+					"==",
+					"T.number_of_cells()",
+					");
+",
+					return,
+					"0;\n/usr/local/include",
 				);
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
@@ -13161,9 +13940,10 @@
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/assimp-3.0.1270/include\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/bullet-2.81-rev2613/src\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/.\"",
+					/usr/local/include,
 				);
 				INSTALL_PATH = "";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /opt/local/lib;
 				OTHER_CPLUSPLUSFLAGS = "    ";
 				OTHER_LDFLAGS = (
 					"-Wl,-search_paths_first",
@@ -14154,6 +14934,236 @@
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/assimp-3.0.1270/include\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/bullet-2.81-rev2613/src\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/.\"",
+					"#include",
+					"<CGAL/Exact_predicates_inexact_constructions_kernel.h>\n#include",
+					"<CGAL/Triangulation_3.h>\n#include",
+					"<iostream>\n#include",
+					"<fstream>\n#include",
+					"<cassert>\n#include",
+					"<list>\n#include",
+					"<vector>\ntypedef",
+					"CGAL::Exact_predicates_inexact_constructions_kernel",
+					"K;\ntypedef",
+					"CGAL::Triangulation_3<K>",
+					"Triangulation;\ntypedef",
+					"Triangulation::Cell_handle",
+					"Cell_handle;\ntypedef",
+					"Triangulation::Vertex_handle",
+					"Vertex_handle;\ntypedef",
+					"Triangulation::Locate_type",
+					"Locate_type;\ntypedef",
+					"Triangulation::Point",
+					"Point;\nint",
+					"main()\n{\n",
+					"//",
+					construction,
+					from,
+					a,
+					list,
+					of,
+					points,
+					":
+",
+					"std::list<Point>",
+					"L;
+",
+					"L.push_front(Point(0,0,0));\n",
+					"L.push_front(Point(1,0,0));\n",
+					"L.push_front(Point(0,1,0));\n",
+					Triangulation,
+					"T(L.begin(),",
+					"L.end());\n",
+					"Triangulation::size_type",
+					n,
+					"=",
+					"T.number_of_vertices();\n",
+					"//",
+					insertion,
+					from,
+					a,
+					vector,
+					":
+",
+					"std::vector<Point>",
+					"V(3);\n",
+					"V[0]",
+					"=",
+					"Point(0,0,1);\n",
+					"V[1]",
+					"=",
+					"Point(1,1,1);\n",
+					"V[2]",
+					"=",
+					"Point(2,2,2);\n",
+					n,
+					"=",
+					n,
+					"+",
+					"T.insert(V.begin(),",
+					"V.end());\n",
+					"assert(",
+					n,
+					"==",
+					6,
+					");",
+					"//",
+					6,
+					points,
+					have,
+					been,
+					"inserted\n",
+					"assert(",
+					"T.is_valid()",
+					");",
+					"//",
+					checking,
+					validity,
+					of,
+					"T
+",
+					Locate_type,
+					"lt;
+",
+					int,
+					"li,",
+					"lj;
+",
+					Point,
+					"p(0,0,0);\n",
+					Cell_handle,
+					c,
+					"=",
+					"T.locate(p,",
+					"lt,",
+					"li,",
+					"lj);
+",
+					"//",
+					p,
+					is,
+					the,
+					vertex,
+					of,
+					c,
+					of,
+					index,
+					li,
+					":
+",
+					"assert(",
+					lt,
+					"==",
+					"Triangulation::VERTEX",
+					");
+",
+					"assert(",
+					"c->vertex(li)->point()",
+					"==",
+					p,
+					");
+",
+					Vertex_handle,
+					v,
+					"=",
+					"c->vertex(",
+					"(li+1)&3",
+					");
+",
+					"//",
+					v,
+					is,
+					another,
+					vertex,
+					of,
+					"c
+",
+					Cell_handle,
+					nc,
+					"=",
+					"c->neighbor(li);\n",
+					"//",
+					nc,
+					"=",
+					neighbor,
+					of,
+					c,
+					opposite,
+					to,
+					the,
+					vertex,
+					associated,
+					with,
+					"p
+",
+					"//",
+					nc,
+					must,
+					have,
+					vertex,
+					v,
+					":
+",
+					int,
+					"nli;
+",
+					"assert(",
+					"nc->has_vertex(",
+					"v,",
+					nli,
+					")",
+					");
+",
+					"//",
+					nli,
+					is,
+					the,
+					index,
+					of,
+					v,
+					in,
+					"nc
+",
+					"std::ofstream",
+					"oFileT(\"output\",std::ios::out);\n",
+					"//",
+					writing,
+					file,
+					"output;\n",
+					oFileT,
+					"<<",
+					"T;
+",
+					Triangulation,
+					"T1;
+",
+					"std::ifstream",
+					"iFileT(\"output\",std::ios::in);\n",
+					"//",
+					reading,
+					file,
+					"output;\n",
+					iFileT,
+					">>",
+					"T1;
+",
+					"assert(",
+					"T1.is_valid()",
+					");
+",
+					"assert(",
+					"T1.number_of_vertices()",
+					"==",
+					"T.number_of_vertices()",
+					");
+",
+					"assert(",
+					"T1.number_of_cells()",
+					"==",
+					"T.number_of_cells()",
+					");
+",
+					return,
+					"0;\n/usr/local/include",
 				);
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
@@ -14946,9 +15956,10 @@
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/assimp-3.0.1270/include\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/bullet-2.81-rev2613/src\"",
 					"\"/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/.\"",
+					/usr/local/include,
 				);
 				INSTALL_PATH = "";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /opt/local/lib;
 				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
 				OTHER_LDFLAGS = (
 					"-Wl,-search_paths_first",

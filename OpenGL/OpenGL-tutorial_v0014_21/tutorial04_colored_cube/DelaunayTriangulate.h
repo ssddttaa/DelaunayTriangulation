@@ -36,6 +36,8 @@ using namespace std;
 
 #include "ParseClass.h"
 
+#include "CGALDelaunayTriangulation.h"
+
 #include <unistd.h>
 
 std::vector<GLfloat> objects_vertex_buffers;
@@ -157,6 +159,12 @@ glm::mat4 MVP;
 vector<float> *vertex_buffer_pointer;
 vector<float> *vertex_color_pointer;
 
+std::list<Point> VerticesToTriangulate;
+
+std::list<Point> VerticesToAdd;
+
+Triangulation TriangulationOfPoints;
+
 void generateRandomPoints(vector<vec3> *nodeArray);
 
 void DelaunayTriangulate(vector<vec3> *nodeArray);
@@ -169,13 +177,23 @@ void createAllTetrahedra();
 
 void setBuffers();
 
-void drawLoop();
+void drawLoop(int numberOfVertices, bool drawUsingTetgen);
 
 void cleanup();
+
+void triangulateUsingTetgen(vector<vec3>*nodeArray);
+
+void triangulateUsingCGAL(vector<vec3> *nodeArrayPointer, bool pointsDynamicallyInserted, int nodeArraySize);
+
+void triangulate(bool usingTetgen, vector<vec3>*nodeArray, bool pointsDynamicallyInserted, int nodeArraySize);
+
+void addPointsToTriangulation(vector<vec3> * pointsToAdd, int numberOfPoints);
 
 GLuint vertexbuffer;
 GLfloat *vertexBufferFloat;
 GLfloat *colorBufferFloat;
 GLuint colorbuffer;
+
+bool nowDraw = false;
 
 #endif
