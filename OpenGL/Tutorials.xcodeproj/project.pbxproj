@@ -480,6 +480,9 @@
 		0E64EE26863243DAA8902674 /* camera.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = camera.h; path = "external/assimp-3.0.1270/include/assimp/camera.h"; sourceTree = SOURCE_ROOT; };
 		0E8DD9BF1B3B236700501BF2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = tutorial04_colored_cube/main.cpp; sourceTree = "<group>"; };
 		0E8DD9C01B3B236700501BF2 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = tutorial04_colored_cube/main.h; sourceTree = "<group>"; };
+		0E8DD9C71B3C56DD00501BF2 /* thirdThird.node */ = {isa = PBXFileReference; lastKnownFileType = text; name = thirdThird.node; path = tutorial04_colored_cube/thirdThird.node; sourceTree = "<group>"; };
+		0E8DD9C81B3C56DD00501BF2 /* secondThird.node */ = {isa = PBXFileReference; lastKnownFileType = text; name = secondThird.node; path = tutorial04_colored_cube/secondThird.node; sourceTree = "<group>"; };
+		0E8DD9C91B3C56DD00501BF2 /* firstThird.node */ = {isa = PBXFileReference; lastKnownFileType = text; name = firstThird.node; path = tutorial04_colored_cube/firstThird.node; sourceTree = "<group>"; };
 		0EE4729F047041A0A5956D8C /* OFFLoader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OFFLoader.h; path = "external/assimp-3.0.1270/code/OFFLoader.h"; sourceTree = SOURCE_ROOT; };
 		0EFABAC91B39C03F007A358F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0EFABACB1B39C05C007A358F /* libboost_thread-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_thread-mt.dylib"; path = "../../../../../../../../../opt/local/lib/libboost_thread-mt.dylib"; sourceTree = "<group>"; };
@@ -1058,6 +1061,9 @@
 		0E8DD9BB1B3B222200501BF2 /* NodeFiles */ = {
 			isa = PBXGroup;
 			children = (
+				0E8DD9C71B3C56DD00501BF2 /* thirdThird.node */,
+				0E8DD9C81B3C56DD00501BF2 /* secondThird.node */,
+				0E8DD9C91B3C56DD00501BF2 /* firstThird.node */,
 				0E1A7E6A1B33356C00D80F31 /* attributeTest.node */,
 				0E1A7E791B33356D00D80F31 /* randomNodes.ele */,
 				0E1A7E7A1B33356D00D80F31 /* randomNodes.node */,
@@ -3413,7 +3419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/";
+				CONFIGURATION_BUILD_DIR = "/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/DelaunayTriangulation/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/";
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -4285,7 +4291,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/";
+				CONFIGURATION_BUILD_DIR = "/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/DelaunayTriangulation/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/";
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -5181,7 +5187,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/";
+				CONFIGURATION_BUILD_DIR = "/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/DelaunayTriangulation/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/";
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -5890,7 +5896,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/";
+				CONFIGURATION_BUILD_DIR = "/Users/shaikazmath/Desktop/Desktop Folder/Hackathon/STEM 2014-2015/DelaunayTriangulation/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/";
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;

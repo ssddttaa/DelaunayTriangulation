@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/shaikazmath/Desktop/Desktop\ Folder/Hackathon/STEM\ 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/ParseClass.cpp \
-  /Users/shaikazmath/Desktop/Desktop\ Folder/Hackathon/STEM\ 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/ParseClass.h \
+  /Users/shaikazmath/Desktop/Desktop\ Folder/Hackathon/STEM\ 2014-2015/DelaunayTriangulation/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/ParseClass.cpp \
+  /Users/shaikazmath/Desktop/Desktop\ Folder/Hackathon/STEM\ 2014-2015/DelaunayTriangulation/OpenGL/OpenGL-tutorial_v0014_21/tutorial04_colored_cube/ParseClass.h \
   /Users/shaikazmath/Desktop/Desktop\ Folder/Hackathon/STEM\ 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/glew-1.9.0/include/GL/glew.h \
   /Users/shaikazmath/Desktop/Desktop\ Folder/Hackathon/STEM\ 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/glfw-3.0.3/include/GLFW/glfw3.h \
   /Users/shaikazmath/Desktop/Desktop\ Folder/Hackathon/STEM\ 2014-2015/OpenGL/OpenGL-tutorial_v0014_21/external/glm-0.9.4.0/glm/glm.hpp \
