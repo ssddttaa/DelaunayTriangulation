@@ -40,6 +40,10 @@ DelaunayTriangulation::DelaunayTriangulation()
         -1.0f, 1.0f, 1.0f,
         1.0f,-1.0f, 1.0f
     };
+    
+    vec3 tempViewOffset(0.0,0.0,0.0);
+    
+    viewOffset = tempViewOffset;
     //temporary set of coordinates used to copy the default cube coordiantes into the cube_vertex_data and cube_color_data buffers
 
     numberOfTetrahedra = 0; //Used for the tetgen tetrahedralization
@@ -283,6 +287,30 @@ void DelaunayTriangulation::setBuffers()
 void DelaunayTriangulation::drawLoop(int numberOfVertices, bool drawUsingTetgen)
 {
     do{
+        if(glfwGetKey(window, GLFW_KEY_UP ) == GLFW_PRESS)
+        {
+            viewOffset[1] += 1;
+        }
+        else if(glfwGetKey(window, GLFW_KEY_DOWN ) == GLFW_PRESS)
+        {
+            viewOffset[1] -= 1;
+        }
+        else if(glfwGetKey(window, GLFW_KEY_RIGHT ) == GLFW_PRESS)
+        {
+            viewOffset[0] += 1;
+        }
+        else if(glfwGetKey(window, GLFW_KEY_LEFT ) == GLFW_PRESS)
+        {
+            viewOffset[0] -= 1;
+        }
+        else if(glfwGetKey(window, GLFW_KEY_S ) == GLFW_PRESS)
+        {
+            viewOffset[2] += 1;
+        }
+        else if(glfwGetKey(window, GLFW_KEY_W ) == GLFW_PRESS)
+        {
+            viewOffset[2] -= 1;
+        }
         // Clear the screen
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
@@ -360,12 +388,7 @@ void DelaunayTriangulation::drawLoop(int numberOfVertices, bool drawUsingTetgen)
                         if(abs(tempVec[k])>currentViewScale)
                         {
                             currentViewScale = abs(tempVec[k]);
-                            View       = glm::lookAt(
-                                                     glm::vec3(currentViewScale,currentViewScale,-currentViewScale), // Camera is at (4,3,-3), in World Space
-                                                     glm::vec3(0,0,0), // and looks at the origin
-                                                     glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
-                                                     );
-                            MVP        = Projection * View * Model;
+                            
                         }
                     }
                 }
@@ -374,6 +397,13 @@ void DelaunayTriangulation::drawLoop(int numberOfVertices, bool drawUsingTetgen)
                 DrawLines(drawOrder, &triangleCoords, 3);
             }
         }
+        
+        View       = glm::lookAt(
+                                 glm::vec3(currentViewScale+viewOffset[0],currentViewScale+viewOffset[1],-currentViewScale-viewOffset[2]), // Camera is at (4,3,-3), in World Space
+                                 glm::vec3(0,0,0), // and looks at the origin
+                                 glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
+                                 );
+        MVP        = Projection * View * Model;
         
         glDisableVertexAttribArray(vertexPosition_modelspaceID);
         glDisableVertexAttribArray(vertexColorID);

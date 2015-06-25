@@ -45,7 +45,6 @@ using namespace std;
 #include <stdio.h>
 
 #include <stdlib.h>
-
 class DelaunayTriangulation
 {
         public:
@@ -94,7 +93,9 @@ class DelaunayTriangulation
             
             vector<float> *vertex_buffer_pointer;
             vector<float> *vertex_color_pointer;
-            
+    
+            vec3 viewOffset;
+    
             std::list<Point> VerticesToTriangulate;
             
             std::list<Point> VerticesToAdd;
