@@ -46,7 +46,12 @@ DelaunayTriangulation::DelaunayTriangulation()
     memcpy(cube_vertex_data, temp_vertex_data, sizeof(temp_vertex_data));//Copies over the contents of the temp cube
     memcpy(cube_color_data, temp_vertex_data, sizeof(temp_vertex_data));//Copies over the content of the temp cube
 
+    currentViewScale = .0000000000000000001;
+    
     totalVertices = 0;//Variable used for the tetegen library
+    
+    //REMOVE WHEN USING ROS TO GET THE DATA
+    
     
     //PARSE THROUGH NODE FILE AND GET ALL OF THE NODES
     int nodeArraySize;
@@ -64,9 +69,7 @@ DelaunayTriangulation::DelaunayTriangulation()
     
     addPointsToTriangulation(&secondThird, numberOfAddedPoints);
     
-    //REMOVE WHEN USING ROS TO GET THE DATA
     nowDraw = true;
-    
     vector<vec3> ThirdThird;
     int numberOfAddedPointsLast;
     ParseClass::ParseNodeFile("thirdThird.node", &ThirdThird, &numberOfAddedPointsLast);
@@ -208,8 +211,6 @@ void DelaunayTriangulation::setupWindow()
     
     // Create and compile our GLSL program from the shaders
     
-    
-    
     programID = LoadShaders( "TransformVertexShader.vertexshader", "ColorFragmentShader.fragmentshader" );
     
     // Get a handle for our "MVP" uniform
@@ -222,7 +223,7 @@ void DelaunayTriangulation::setupWindow()
     Projection = glm::perspective(90.0f, 4.0f / 3.0f, 0.1f, 300.0f);
     // Camera matrix
     View       = glm::lookAt(
-                                       glm::vec3(50,50,-50), // Camera is at (4,3,-3), in World Space
+                                       glm::vec3(currentViewScale,currentViewScale,-currentViewScale), // Camera is at (4,3,-3), in World Space
                                        glm::vec3(0,0,0), // and looks at the origin
                                        glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
                                        );
@@ -334,52 +335,44 @@ void DelaunayTriangulation::drawLoop(int numberOfVertices, bool drawUsingTetgen)
                 vec3 tetPoint3(nodeArray.at((tetrahedraArray.at((i*4)+2))));
                 vec3 tetPoint4(nodeArray.at((tetrahedraArray.at((i*4)+3))));
                 
-                glBegin(GL_LINES);
-                glVertex3f(tetPoint1[0],tetPoint1[1],tetPoint1[2]);
-                glVertex3f(tetPoint2[0],tetPoint2[1],tetPoint2[2]);
-                glEnd();
-                glBegin(GL_LINES);
-                glVertex3f(tetPoint1[0],tetPoint1[1],tetPoint1[2]);
-                glVertex3f(tetPoint3[0],tetPoint3[1],tetPoint3[2]);
-                glEnd();
-                glBegin(GL_LINES);
-                glVertex3f(tetPoint1[0],tetPoint1[1],tetPoint1[2]);
-                glVertex3f(tetPoint4[0],tetPoint4[1],tetPoint4[2]);
-                glEnd();
-                glBegin(GL_LINES);
-                glVertex3f(tetPoint2[0],tetPoint2[1],tetPoint2[2]);
-                glVertex3f(tetPoint3[0],tetPoint3[1],tetPoint3[2]);
-                glEnd();
-                glBegin(GL_LINES);
-                glVertex3f(tetPoint3[0],tetPoint3[1],tetPoint3[2]);
-                glVertex3f(tetPoint4[0],tetPoint4[1],tetPoint4[2]);
-                glEnd();
-                glBegin(GL_LINES);
-                glVertex3f(tetPoint2[0],tetPoint2[1],tetPoint2[2]);
-                glVertex3f(tetPoint4[0],tetPoint4[1],tetPoint4[2]);
-                glEnd();
+                int drawOrder[12] = {0,1,0,2,0,3,1,2,2,3,1,3};
                 
+                DrawLines(drawOrder, &tetPoints, 6);
             }
         }
         else
         {
             for(int i = 0; i< numberOfVertices/3;i++)
             {
+                vector<vec3> triangleCoords;
                 vec3 triPoint1(g_vertex_buffer_data.at(i*9),g_vertex_buffer_data.at((i*9)+1), g_vertex_buffer_data.at((i*9)+2));
                 vec3 triPoint2(g_vertex_buffer_data.at((i*9)+3),g_vertex_buffer_data.at((i*9)+4), g_vertex_buffer_data.at((i*9)+5));
                 vec3 triPoint3(g_vertex_buffer_data.at((i*9)+6),g_vertex_buffer_data.at((i*9)+7), g_vertex_buffer_data.at((i*9)+8));
-                glBegin(GL_LINES);
-                glVertex3f(triPoint1[0],triPoint1[1],triPoint1[2]);
-                glVertex3f(triPoint2[0],triPoint2[1],triPoint2[2]);
-                glEnd();
-                glBegin(GL_LINES);
-                glVertex3f(triPoint1[0],triPoint1[1],triPoint1[2]);
-                glVertex3f(triPoint3[0],triPoint3[1],triPoint3[2]);
-                glEnd();
-                glBegin(GL_LINES);
-                glVertex3f(triPoint2[0],triPoint2[1],triPoint2[2]);
-                glVertex3f(triPoint3[0],triPoint3[1],triPoint3[2]);
-                glEnd();
+                
+                triangleCoords.push_back(triPoint1);
+                triangleCoords.push_back(triPoint2);
+                triangleCoords.push_back(triPoint3);
+                
+                for(int j = 0;j<3;j++)
+                {
+                    vec3 tempVec(triangleCoords.at(j));
+                    for(int k =0; k<3;k++)
+                    {
+                        if(abs(tempVec[k])>currentViewScale)
+                        {
+                            currentViewScale = abs(tempVec[k]);
+                            View       = glm::lookAt(
+                                                     glm::vec3(currentViewScale,currentViewScale,-currentViewScale), // Camera is at (4,3,-3), in World Space
+                                                     glm::vec3(0,0,0), // and looks at the origin
+                                                     glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
+                                                     );
+                            MVP        = Projection * View * Model;
+                        }
+                    }
+                }
+                
+                int drawOrder[6] = {0,1,0,2,1,2};
+                DrawLines(drawOrder, &triangleCoords, 3);
             }
         }
         
@@ -395,6 +388,20 @@ void DelaunayTriangulation::drawLoop(int numberOfVertices, bool drawUsingTetgen)
     while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
           glfwWindowShouldClose(window) == 0 );
     //INSERT EVENT HANDLER HERE
+}
+
+void DelaunayTriangulation::DrawLines(int * drawOrder, vector<vec3>* vertices, int linesToDraw)
+{
+    for(int i = 0; i<linesToDraw; i++)
+    {
+        vec3 currentVec1(vertices->at(drawOrder[i*2]));
+        vec3 currentVec2(vertices->at(drawOrder[(i*2)+1]));
+        
+        glBegin(GL_LINES);
+        glVertex3f(currentVec1[0],currentVec1[1],currentVec1[2]);
+        glVertex3f(currentVec2[0],currentVec2[1],currentVec2[2]);
+        glEnd();
+    }
 }
 
 //This cleans up the buffers for memory saving purposes.

@@ -44,6 +44,8 @@ using namespace std;
 
 #include <stdio.h>
 
+#include <stdlib.h>
+
 class DelaunayTriangulation
 {
         public:
@@ -103,7 +105,9 @@ class DelaunayTriangulation
             GLfloat *vertexBufferFloat;
             GLfloat *colorBufferFloat;
             GLuint colorbuffer;
-            
+    
+            float currentViewScale;
+    
             bool nowDraw = false;
 
             DelaunayTriangulation();
@@ -119,6 +123,7 @@ class DelaunayTriangulation
             void triangulateUsingCGAL(vector<vec3> *nodeArrayPointer, bool pointsDynamicallyInserted, int nodeArraySize);
             void triangulate(bool usingTetgen, vector<vec3>*nodeArray, bool pointsDynamicallyInserted, int nodeArraySize);
             void addPointsToTriangulation(vector<vec3> * pointsToAdd, int numberOfPoints);
+            void DrawLines(int * drawOrder, vector<vec3>* vertices, int linesToDraw);
 };
 
 #endif
