@@ -50,7 +50,7 @@ DelaunayTriangulation::DelaunayTriangulation()
     memcpy(cube_vertex_data, temp_vertex_data, sizeof(temp_vertex_data));//Copies over the contents of the temp cube
     memcpy(cube_color_data, temp_vertex_data, sizeof(temp_vertex_data));//Copies over the content of the temp cube
 
-    currentViewScale = .0000000000000000001;
+    currentViewScale = -5.0;
     
     totalVertices = 0;//Variable used for the tetegen library
     
