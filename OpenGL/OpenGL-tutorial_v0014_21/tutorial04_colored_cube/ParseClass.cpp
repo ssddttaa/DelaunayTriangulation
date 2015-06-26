@@ -12,23 +12,11 @@
 #include <string>
 #include <stdlib.h>
 
-// Include GLEW
-#include <GL/glew.h>
-
-// Include GLFW
-#include <glfw3.h>
-
-// Include GLM
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
 using namespace std;
-
-using namespace glm;
 
 void ParseClass::ParseEdgeFile(string fileName, vector<float> *nodeArray, int* numberOfVertices)
 {
@@ -67,7 +55,7 @@ void ParseClass::ParseEdgeFile(string fileName, vector<float> *nodeArray, int* n
     }
 }
 
-void ParseClass::ParseNodeFile(string fileName, vector<vec3> *nodeArray, int* numberOfVertices)
+void ParseClass::ParseNodeFile(string fileName, vector<vector<float> > *nodeArray, int* numberOfVertices)
 {
     ifstream fileHandle;
     fileHandle.open(fileName);
@@ -91,7 +79,10 @@ void ParseClass::ParseNodeFile(string fileName, vector<vec3> *nodeArray, int* nu
             iss>>yCoordinate;
             iss>>zCoordinate;
             
-            vec3 coordinate(xCoordinate, yCoordinate, zCoordinate);
+            vector<float> coordinate;
+            coordinate.push_back(xCoordinate);
+            coordinate.push_back(yCoordinate);
+            coordinate.push_back(zCoordinate);
             
             nodeArray->push_back(coordinate);
         }
@@ -118,23 +109,24 @@ void ParseClass::ParseMeshFile(string meshFile, vector<int> *facetArray, int* nu
         {
             
             float nextNumber;
-            vec3 tempFacet;
+            vector<float> tempFacet;
             iss>>nextNumber; //Throw away first value, which is the id of hte current point.
             
             iss>>nextNumber; //Keep the second number, as that is x coordinate
-            tempFacet[0] = nextNumber;
+            
+            tempFacet.push_back(nextNumber);
             
             iss>>nextNumber; //Keep the third number, as that is y coordinate
-            tempFacet[1] = nextNumber;
+            tempFacet.push_back(nextNumber);
             
             iss>>nextNumber; //Keep the fourth number, as that is z coordinate
-            tempFacet[2] = nextNumber;
+            tempFacet.push_back(nextNumber);
         }
     }
 }
 
 
-void ParseClass::ParseFaceFile(string faceFileName, vector<vec3> *nodeArray, int* numberOfVertices)
+void ParseClass::ParseFaceFile(string faceFileName, vector<vector<float> > *nodeArray, int* numberOfVertices)
 {
     ifstream fileHandle;
     fileHandle.open(faceFileName);
@@ -144,16 +136,16 @@ void ParseClass::ParseFaceFile(string faceFileName, vector<vec3> *nodeArray, int
         istringstream iss(currentLine);
         float nextNumber;
         
-        vec3 tempVec;
+        vector<float> tempVec;
         iss>>nextNumber; //Keep the second number, as that is x coordinate
         
-        tempVec[0] = nextNumber;
+        tempVec.push_back(nextNumber);
         
         iss>>nextNumber; //Keep the third number, as that is y coordinate
-        tempVec[1] = nextNumber;
+        tempVec.push_back(nextNumber);
         
         iss>>nextNumber; //Keep the fourth number, as that is z coordinate
-        tempVec[2] = nextNumber;
+        tempVec.push_back(nextNumber);
         
         nodeArray->push_back(tempVec);
     }

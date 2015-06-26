@@ -9,7 +9,7 @@
 #include "BufferActions.h"
 
 
-void BufferActions::addObjectToBuffer(GLfloat *vertexesToAdd, GLfloat *colorsToAdd, int numberOfVertices, vector<float> *vertex_buffer_pointer, vector<float> *color_buffer_pointer)
+void BufferActions::addObjectToBuffer(float *vertexesToAdd, float *colorsToAdd, int numberOfVertices, vector<float> *vertex_buffer_pointer, vector<float> *color_buffer_pointer)
 {
     for(int i = 0;i<numberOfVertices;i++)
     {
@@ -18,12 +18,12 @@ void BufferActions::addObjectToBuffer(GLfloat *vertexesToAdd, GLfloat *colorsToA
     }
 }
 
-void BufferActions::addVec3ToBuffer(int * arrayOfVec3, vector<float> *buffer_pointer, vector<vec3> * allVec3s, int numberOfVectorsToAdd)
+void BufferActions::addVec3ToBuffer(int * arrayOfVec3, vector<float> *buffer_pointer, vector<vector<float> > * allVec3s, int numberOfVectorsToAdd)
 {
     for(int i = 0;i<numberOfVectorsToAdd;i++)
     {
         int whichPointToAdd = arrayOfVec3[i];
-        vec3 tempVec(allVec3s->at(whichPointToAdd));
+        vector<float> tempVec(allVec3s->at(whichPointToAdd));
         buffer_pointer->push_back(tempVec[0]);
         buffer_pointer->push_back(tempVec[1]);
         buffer_pointer->push_back(tempVec[2]);

@@ -17,8 +17,6 @@
 #include <cassert>
 #include <list>
 #include <vector>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 #include "BufferActions.h"
 
 typedef CGAL::Exact_predicates_inexact_constructions_kernel K;
@@ -31,11 +29,10 @@ typedef Triangulation::Point          Point;
 typedef CGAL::Triangulation_3<CGAL::Epick, CGAL::Default, CGAL::Default> Triangulation_3;
 
 using namespace std;
-using namespace glm;
 
 class CGALDelaunay
 {
     public:
-        static void TriangulateUsingCGAL(vector<vec3> *nodeArrayPointer, vector<float>* bufferPointer, vector<float> *colorPointer, int* numberOfVertices, std::list<Point> *VerticesToTriangulate, std::list<Point> * VerticesToAdd, int* verticesAlreadyAdded,Triangulation* T, int* totalVertices);
+        static void TriangulateUsingCGAL(vector<vector<float> > *nodeArrayPointer, vector<float>* bufferPointer, vector<float> *colorPointer, int* numberOfVertices, std::list<Point> *VerticesToTriangulate, std::list<Point> * VerticesToAdd, int* verticesAlreadyAdded,Triangulation* T, int* totalVertices);
 };
 #endif /* defined(__Tutorials__CGALDelaunayTriangulation__) */

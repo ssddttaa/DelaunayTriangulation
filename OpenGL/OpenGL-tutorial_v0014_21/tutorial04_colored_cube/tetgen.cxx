@@ -16,7 +16,6 @@
 #include "tetgen.h"
 #include <iostream>
 #include <fstream>
-#include <glm/glm.hpp>
 
 //// io_cxx ///////////////////////////////////////////////////////////////////
 ////                                                                       ////

@@ -14,21 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Include GLEW
-#include <GL/glew.h>
-
-// Include GLFW
-#include <glfw3.h>
-
-// Include GLM
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include "DrawObjects.h"
-
-using namespace glm;
 using namespace std;
-
-#include <common/shader.hpp>
 
 #include <iostream>
 
@@ -40,8 +26,8 @@ using namespace std;
 class BufferActions
 {
     public:
-        static void addObjectToBuffer(GLfloat * bufferToAdd, GLfloat *colorsToAdd, int numberOfVertices, vector<float> *vertex_buffer_pointer, vector<float> *color_buffer_pointer);
-        static void addVec3ToBuffer(int * arrayOfVec3,vector<float> *buffer_pointer, vector<vec3> * allVec3s, int numberOfVectorsToAdd);
+        static void addObjectToBuffer(float * bufferToAdd, float *colorsToAdd, int numberOfVertices, vector<float> *vertex_buffer_pointer, vector<float> *color_buffer_pointer);
+        static void addVec3ToBuffer(int * arrayOfVec3,vector<float> *buffer_pointer, vector<vector<float> > * allVec3s, int numberOfVectorsToAdd);
 };
 
 #endif /* defined(__Tutorials__BufferActions__) */

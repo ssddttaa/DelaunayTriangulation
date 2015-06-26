@@ -66,7 +66,6 @@
 		07DCAFC2F17C42548EF5387D /* btConvexHull.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B524B7B86B6343808E73C1F6 /* btConvexHull.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		08C608AA98174C91B824AF21 /* Exporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2361DFAADE4D54A6F78FCB /* Exporter.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		0E1A7E8A1B33356D00D80F31 /* BufferActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E6C1B33356D00D80F31 /* BufferActions.cpp */; };
-		0E1A7E8B1B33356D00D80F31 /* DrawObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E6F1B33356D00D80F31 /* DrawObjects.cpp */; };
 		0E1A7E8C1B33356D00D80F31 /* ParseClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E751B33356D00D80F31 /* ParseClass.cpp */; };
 		0E1A7E8D1B33356D00D80F31 /* predicates.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E771B33356D00D80F31 /* predicates.cxx */; };
 		0E1A7E8E1B33356D00D80F31 /* tetgen.cxx in Sources */ = {isa = PBXBuildFile; fileRef = 0E1A7E841B33356D00D80F31 /* tetgen.cxx */; };
@@ -152,7 +151,6 @@
 		6E8DCFC0D9B04EB8B1FB7BBA /* Assimp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C94825730074119A4C27D02 /* Assimp.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		6F8516E3432C48CD87FF0B25 /* STLLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71A5F08203EA445C9E985817 /* STLLoader.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		701458444EFF4569B16B0A82 /* TwColors.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEEB6D85884446D6969E8D74 /* TwColors.mm */; settings = {COMPILER_FLAGS = ""; }; };
-		72C351A469BA407F915E64CB /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E403CF396F9642C1A6DB6D09 /* shader.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		73B4A08858CF4D8C8815A16D /* cocoa_init.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EC6068A7C9413EAB2E3FA9 /* cocoa_init.m */; settings = {COMPILER_FLAGS = ""; }; };
 		774A04824A984A928FF71F56 /* irrXML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3DFF93AADD14891AAD4FAD8 /* irrXML.cpp */; settings = {COMPILER_FLAGS = ""; }; };
 		78412FB0048343318E4F4F03 /* ImproveCacheLocality.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB5691556D6E45FEBE4C44DB /* ImproveCacheLocality.cpp */; settings = {COMPILER_FLAGS = ""; }; };
@@ -454,9 +452,6 @@
 		0E1A7E6A1B33356C00D80F31 /* attributeTest.node */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = attributeTest.node; path = tutorial04_colored_cube/attributeTest.node; sourceTree = "<group>"; };
 		0E1A7E6C1B33356D00D80F31 /* BufferActions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BufferActions.cpp; path = tutorial04_colored_cube/BufferActions.cpp; sourceTree = "<group>"; };
 		0E1A7E6D1B33356D00D80F31 /* BufferActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BufferActions.h; path = tutorial04_colored_cube/BufferActions.h; sourceTree = "<group>"; };
-		0E1A7E6E1B33356D00D80F31 /* ColorFragmentShader.fragmentshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ColorFragmentShader.fragmentshader; path = tutorial04_colored_cube/ColorFragmentShader.fragmentshader; sourceTree = "<group>"; };
-		0E1A7E6F1B33356D00D80F31 /* DrawObjects.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DrawObjects.cpp; path = tutorial04_colored_cube/DrawObjects.cpp; sourceTree = "<group>"; };
-		0E1A7E701B33356D00D80F31 /* DrawObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawObjects.h; path = tutorial04_colored_cube/DrawObjects.h; sourceTree = "<group>"; };
 		0E1A7E711B33356D00D80F31 /* edges.edge */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = edges.edge; path = tutorial04_colored_cube/edges.edge; sourceTree = "<group>"; };
 		0E1A7E721B33356D00D80F31 /* edges.ele */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = edges.ele; path = tutorial04_colored_cube/edges.ele; sourceTree = "<group>"; };
 		0E1A7E731B33356D00D80F31 /* example.poly */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = example.poly; path = tutorial04_colored_cube/example.poly; sourceTree = "<group>"; };
@@ -473,7 +468,6 @@
 		0E1A7E841B33356D00D80F31 /* tetgen.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tetgen.cxx; path = tutorial04_colored_cube/tetgen.cxx; sourceTree = "<group>"; };
 		0E1A7E851B33356D00D80F31 /* tetgen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tetgen.h; path = tutorial04_colored_cube/tetgen.h; sourceTree = "<group>"; };
 		0E1A7E861B33356D00D80F31 /* tetgen.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = tetgen.o; path = tutorial04_colored_cube/tetgen.o; sourceTree = "<group>"; };
-		0E1A7E871B33356D00D80F31 /* TransformVertexShader.vertexshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TransformVertexShader.vertexshader; path = tutorial04_colored_cube/TransformVertexShader.vertexshader; sourceTree = "<group>"; };
 		0E1A7E921B33360000D80F31 /* DelaunayTriangulate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DelaunayTriangulate.cpp; path = tutorial04_colored_cube/DelaunayTriangulate.cpp; sourceTree = "<group>"; };
 		0E1CBCF11B3859E00074AF24 /* DelaunayTriangulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DelaunayTriangulate.h; path = tutorial04_colored_cube/DelaunayTriangulate.h; sourceTree = "<group>"; };
 		0E581CC4011A4F10AAC0049A /* VertexTriangleAdjacency.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = VertexTriangleAdjacency.cpp; path = "external/assimp-3.0.1270/code/VertexTriangleAdjacency.cpp"; sourceTree = SOURCE_ROOT; };
@@ -654,7 +648,6 @@
 		5F1D8D73091D44A495AC3D38 /* anim.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = anim.h; path = "external/assimp-3.0.1270/include/assimp/anim.h"; sourceTree = SOURCE_ROOT; };
 		5F618C57F2F14ACC971DB037 /* vector3.inl */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = vector3.inl; path = "external/assimp-3.0.1270/include/assimp/vector3.inl"; sourceTree = SOURCE_ROOT; };
 		5FEE5168B79F446BA06873CC /* CalcTangentsProcess.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = CalcTangentsProcess.cpp; path = "external/assimp-3.0.1270/code/CalcTangentsProcess.cpp"; sourceTree = SOURCE_ROOT; };
-		627CFD10210A45818DC62EEA /* ColorFragmentShader.fragmentshader */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = ColorFragmentShader.fragmentshader; path = tutorial04_colored_cube/ColorFragmentShader.fragmentshader; sourceTree = SOURCE_ROOT; };
 		62896FAF69BF4E74972E76D0 /* btQuadWord.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = btQuadWord.h; path = "external/bullet-2.81-rev2613/src/LinearMath/btQuadWord.h"; sourceTree = SOURCE_ROOT; };
 		629F45916C19470E91972DA3 /* RawLoader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = RawLoader.h; path = "external/assimp-3.0.1270/code/RawLoader.h"; sourceTree = SOURCE_ROOT; };
 		62CE603A11F24EF29E9277BB /* PlyLoader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = PlyLoader.h; path = "external/assimp-3.0.1270/code/PlyLoader.h"; sourceTree = SOURCE_ROOT; };
@@ -682,7 +675,6 @@
 		71A5F08203EA445C9E985817 /* STLLoader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = STLLoader.cpp; path = "external/assimp-3.0.1270/code/STLLoader.cpp"; sourceTree = SOURCE_ROOT; };
 		728EC7D0B969418F9A46B550 /* postprocess.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = postprocess.h; path = "external/assimp-3.0.1270/include/assimp/postprocess.h"; sourceTree = SOURCE_ROOT; };
 		731FFF782683414189179033 /* TwEventGLFW.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; name = TwEventGLFW.m; path = "../external/AntTweakBar-ObjectiveC/TwEventGLFW.m"; sourceTree = SOURCE_ROOT; };
-		732FAD222D3641389FB86DE8 /* TransformVertexShader.vertexshader */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = TransformVertexShader.vertexshader; path = tutorial04_colored_cube/TransformVertexShader.vertexshader; sourceTree = SOURCE_ROOT; };
 		74892819288247D588C83E6F /* fast_atof.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = fast_atof.h; path = "external/assimp-3.0.1270/code/fast_atof.h"; sourceTree = SOURCE_ROOT; };
 		74A7749529F04791AFD56EC7 /* BlenderSceneGen.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = BlenderSceneGen.h; path = "external/assimp-3.0.1270/code/BlenderSceneGen.h"; sourceTree = SOURCE_ROOT; };
 		7500DAC6FEE24D1D93B721F8 /* compress.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = compress.c; path = "external/assimp-3.0.1270/contrib/zlib/compress.c"; sourceTree = SOURCE_ROOT; };
@@ -836,7 +828,6 @@
 		C59556CB32404ADB80858F91 /* PlyParser.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = PlyParser.h; path = "external/assimp-3.0.1270/code/PlyParser.h"; sourceTree = SOURCE_ROOT; };
 		C655FCECAC4742F582C4AD70 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = external/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		C65F4010012D4353AD94E78F /* FindInvalidDataProcess.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = FindInvalidDataProcess.cpp; path = "external/assimp-3.0.1270/code/FindInvalidDataProcess.cpp"; sourceTree = SOURCE_ROOT; };
-		C71D91ED52C745119D3C9E4B /* shader.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = shader.hpp; path = common/shader.hpp; sourceTree = SOURCE_ROOT; };
 		C73B434F15E1460C8E623EFB /* OgreSkeleton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = OgreSkeleton.cpp; path = "external/assimp-3.0.1270/code/OgreSkeleton.cpp"; sourceTree = SOURCE_ROOT; };
 		C7DFAA24C6784812919D3AD2 /* MD4FileData.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = MD4FileData.h; path = "external/assimp-3.0.1270/code/MD4FileData.h"; sourceTree = SOURCE_ROOT; };
 		C8EDC6AF00E8478D9414EE00 /* advancing_front.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = advancing_front.h; path = "external/assimp-3.0.1270/contrib/poly2tri/poly2tri/sweep/advancing_front.h"; sourceTree = SOURCE_ROOT; };
@@ -887,7 +878,6 @@
 		E1FFB85BFC7B4D8EB88BC19D /* Q3BSPFileParser.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Q3BSPFileParser.h; path = "external/assimp-3.0.1270/code/Q3BSPFileParser.h"; sourceTree = SOURCE_ROOT; };
 		E22D4B5784D742CDADD9E2BC /* PlyParser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = PlyParser.cpp; path = "external/assimp-3.0.1270/code/PlyParser.cpp"; sourceTree = SOURCE_ROOT; };
 		E3723295DCA9412186A48E75 /* COBLoader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = COBLoader.h; path = "external/assimp-3.0.1270/code/COBLoader.h"; sourceTree = SOURCE_ROOT; };
-		E403CF396F9642C1A6DB6D09 /* shader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = shader.cpp; path = common/shader.cpp; sourceTree = SOURCE_ROOT; };
 		E485F8D8ADE04024B1D68E62 /* DefaultLogger.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = DefaultLogger.cpp; path = "external/assimp-3.0.1270/code/DefaultLogger.cpp"; sourceTree = SOURCE_ROOT; };
 		E496C74967BD4F7C97A5A45A /* PretransformVertices.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = PretransformVertices.h; path = "external/assimp-3.0.1270/code/PretransformVertices.h"; sourceTree = SOURCE_ROOT; };
 		E5BAEF8738F14FF5944188BB /* AssimpCExport.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = AssimpCExport.cpp; path = "external/assimp-3.0.1270/code/AssimpCExport.cpp"; sourceTree = SOURCE_ROOT; };
@@ -1134,8 +1124,6 @@
 		0EFABAE31B39E44E007A358F /* DrawObjects */ = {
 			isa = PBXGroup;
 			children = (
-				0E1A7E6F1B33356D00D80F31 /* DrawObjects.cpp */,
-				0E1A7E701B33356D00D80F31 /* DrawObjects.h */,
 			);
 			name = DrawObjects;
 			sourceTree = "<group>";
@@ -1280,17 +1268,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2DA88833D1E04F08979498AB /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				0E1A7E6E1B33356D00D80F31 /* ColorFragmentShader.fragmentshader */,
-				0E1A7E871B33356D00D80F31 /* TransformVertexShader.vertexshader */,
-				627CFD10210A45818DC62EEA /* ColorFragmentShader.fragmentshader */,
-				732FAD222D3641389FB86DE8 /* TransformVertexShader.vertexshader */,
-			);
-			name = shaders;
-			sourceTree = "<group>";
-		};
 		2FF0A67C6A02492B906D3F9D /* MD2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1425,8 +1402,6 @@
 			isa = PBXGroup;
 			children = (
 				2FF63CEF39C240F5A1A37817 /* Source Files */,
-				6A64392E51D5482FB968143B /* common */,
-				2DA88833D1E04F08979498AB /* shaders */,
 				1677885D6C8A4B9EBA85BFB0 /* CMakeLists.txt */,
 			);
 			name = DelaunayTriangulation;
@@ -1543,15 +1518,6 @@
 				8283A62908254BBA9AD6B647 /* ConvertUTF.h */,
 			);
 			name = ConvertUTF;
-			sourceTree = "<group>";
-		};
-		6A64392E51D5482FB968143B /* common */ = {
-			isa = PBXGroup;
-			children = (
-				E403CF396F9642C1A6DB6D09 /* shader.cpp */,
-				C71D91ED52C745119D3C9E4B /* shader.hpp */,
-			);
-			name = common;
 			sourceTree = "<group>";
 		};
 		6ECD218A655A49F7BF55B087 /* ASE */ = {
@@ -2488,8 +2454,6 @@
 				0E1A7E8E1B33356D00D80F31 /* tetgen.cxx in Sources */,
 				0EFABAE11B39DDFC007A358F /* CGALDelaunayTriangulation.cpp in Sources */,
 				0E8DD9C11B3B236700501BF2 /* main.cpp in Sources */,
-				0E1A7E8B1B33356D00D80F31 /* DrawObjects.cpp in Sources */,
-				72C351A469BA407F915E64CB /* shader.cpp in Sources */,
 				0E1A7E8C1B33356D00D80F31 /* ParseClass.cpp in Sources */,
 				0E1A7E8A1B33356D00D80F31 /* BufferActions.cpp in Sources */,
 				0E1A7E8D1B33356D00D80F31 /* predicates.cxx in Sources */,
