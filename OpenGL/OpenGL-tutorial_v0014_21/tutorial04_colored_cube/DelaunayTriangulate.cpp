@@ -33,10 +33,10 @@ DelaunayTriangulation::DelaunayTriangulation()
     
     addPointsToTriangulation(&ThirdThird, numberOfAddedPointsLast);
     
-    /*for(int i = 0 ;i<(g_vertex_buffer_data.size()/3);i++)
+    for(int i = 0 ;i<(g_vertex_buffer_data.size()/3);i++)
     {
         cout<<"Point:("<<g_vertex_buffer_data.at((i*3))<<","<<g_vertex_buffer_data.at((i*3)+1)<<","<<g_vertex_buffer_data.at((i*3)+2)<<")"<<endl;
-    }*/
+    }
 }
 
 //Add points to the triangulation dynamically. The code re-tetrahedralizes with the given points
@@ -100,15 +100,15 @@ void DelaunayTriangulation::DelaunayTriangulate(vector<vector<float> > *nodeArra
     
     
     
-    tetrahedralize(commands, &in, &out);
+    //tetrahedralize(commands, &in, &out);
 
     string filePrefix = "randomNodes";
     char* filePrefixChar= (char*)filePrefix.c_str();
-    out.save_elements(filePrefixChar);
+    //out.save_elements(filePrefixChar);
     
     ParseClass::ParseEdgeFile((filePrefix+".ele"), &tetrahedraArray, &numberOfTetrahedra);
 }
-
+g
 //This function sets up the OpenGL window for displaying the contents of the tetrahedralization
 //Creates the tetrahedron for the tetgen library
 void DelaunayTriangulation::createAllTetrahedra()
