@@ -41,22 +41,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "tutorial04_colored_cube/DelaunayTriangulate.cpp"
-            timestampString = "456942899.244967"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "DelaunayTriangulation::triangulateUsingTetgen(vector&lt;vec3&gt;*nodeArray)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "tutorial04_colored_cube/tetgen.cxx"
             timestampString = "456688444.004351"
             startingColumnNumber = "9223372036854775807"
@@ -90,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tutorial04_colored_cube/DelaunayTriangulate.cpp"
-            timestampString = "456942899.244967"
+            timestampString = "457026210.096869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "DelaunayTriangulation::DelaunayTriangulation()"
             landmarkType = "5">
          </BreakpointContent>

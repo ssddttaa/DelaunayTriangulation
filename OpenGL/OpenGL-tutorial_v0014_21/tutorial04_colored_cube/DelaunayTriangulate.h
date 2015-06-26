@@ -48,7 +48,6 @@ using namespace std;
 class DelaunayTriangulation
 {
         public:
-            GLFWwindow* window;
             
             std::vector<GLfloat> objects_vertex_buffers;
             std::vector<GLfloat> objects_color_buffers;
@@ -64,32 +63,11 @@ class DelaunayTriangulation
             
             vector<vec3> hullFaces;
             
-            GLfloat cube_vertex_data[108];
-            //RAINBOW CUBE
-            GLfloat cube_color_data[108];
-            
             vector<vec3> nodeArray;
             int numVertices;
             
             int totalVertices = 0;
             tetgenio in, out;
-            
-            GLuint programID;
-            
-            // Get a handle for our "MVP" uniform
-            GLuint MatrixID;
-            
-            // Get a handle for our buffers
-            GLuint vertexPosition_modelspaceID;
-            GLuint vertexColorID;
-            // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-            glm::mat4 Projection;
-            // Camera matrix
-            glm::mat4 View;
-            // Model matrix : an identity matrix (model will be at the origin)
-            glm::mat4 Model;
-            // Our ModelViewProjection : multiplication of our 3 matrices
-            glm::mat4 MVP;
             
             vector<float> *vertex_buffer_pointer;
             vector<float> *vertex_color_pointer;
@@ -114,17 +92,12 @@ class DelaunayTriangulation
             DelaunayTriangulation();
             void generateRandomPoints(vector<vec3> *nodeArray);
             void DelaunayTriangulate(vector<vec3> *nodeArray);
-            void setupWindow();
             void createAllPoints(vector<float> *vertex_buffer_pointer, vector<float> *vertex_color_pointer);
             void createAllTetrahedra();
-            void setBuffers();
-            void drawLoop(int numberOfVertices, bool drawUsingTetgen);
-            void cleanup();
             void triangulateUsingTetgen(vector<vec3>*nodeArray);
             void triangulateUsingCGAL(vector<vec3> *nodeArrayPointer, bool pointsDynamicallyInserted, int nodeArraySize);
             void triangulate(bool usingTetgen, vector<vec3>*nodeArray, bool pointsDynamicallyInserted, int nodeArraySize);
             void addPointsToTriangulation(vector<vec3> * pointsToAdd, int numberOfPoints);
-            void DrawLines(int * drawOrder, vector<vec3>* vertices, int linesToDraw);
 };
 
 #endif
